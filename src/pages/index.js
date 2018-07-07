@@ -4,7 +4,6 @@ import React, { Fragment } from 'react';
 import Scrollchor from 'react-scrollchor';
 import {
   Avatar as A,
-  BackgroundImage,
   Box,
   Button as B,
   Card as C,
@@ -16,6 +15,7 @@ import {
   Subhead,
   Text,
 } from 'rebass';
+import PostPreview from '../components/PostPreview';
 import { colors, lineHeights } from '../theme';
 
 const Avatar = A.extend.attrs({ mb: 3 })`
@@ -66,14 +66,6 @@ const Card = C.extend`
   }
 `;
 
-const Thumbnail = BackgroundImage.extend.attrs({ ratio: 9 / 16 })`
-  border-radius: 1px;
-
-  ${Card}:hover & {
-    opacity: 0.8;
-  }
-`;
-
 const IndexPage = ({ data }) => (
   <Fragment>
     <Container>
@@ -121,29 +113,7 @@ const IndexPage = ({ data }) => (
 
         <Flex flexWrap="wrap" mx={-2}>
           {data.allMarkdownRemark.edges.map(({ node }) => (
-            <Box key={node.fields.slug} is="article" p={2} w={[1, 1 / 3]}>
-              <Link to={node.fields.slug} style={{ textDecoration: 'none' }}>
-                <Card p={0}>
-                  <Thumbnail
-                    is="img"
-                    src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20"
-                  />
-
-                  <Box p={3}>
-                    <Subhead fontSize={3} color="black87">
-                      {node.frontmatter.title}
-                    </Subhead>
-                    <Small fontSize={1} color="black54">
-                      {node.fields.date}
-                    </Small>
-
-                    <Text is="p" mt={3} color="black87">
-                      {node.excerpt}
-                    </Text>
-                  </Box>
-                </Card>
-              </Link>
-            </Box>
+            <PostPreview key={node.fields.slug} node={node} />
           ))}
         </Flex>
       </Box>
