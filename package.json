@@ -19,6 +19,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
     "babel-plugin-styled-components": "^1.5.1",
+    "disqus-react": "^1.0.5",
     "dotenv": "^6.0.0",
     "gatsby": "^1.9.273",
     "gatsby-image": "^1.0.54",

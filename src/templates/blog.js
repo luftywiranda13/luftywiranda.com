@@ -1,3 +1,4 @@
+import { DiscussionEmbed } from 'disqus-react';
 import Link from 'gatsby-link';
 import { kebabCase } from 'lodash';
 import React, { Fragment } from 'react';
@@ -19,6 +20,8 @@ const Tag = Button.extend.attrs({
 
 export default ({ data }) => {
   const { title, tags } = data.markdownRemark.frontmatter;
+  const { siteUrl } = data.site.siteMetadata;
+  const url = `${siteUrl}/${data.markdownRemark.fields.slug}`;
 
   return (
     <Fragment>
@@ -41,6 +44,17 @@ export default ({ data }) => {
             </Tag>
           ))}
         </Box>
+
+        <Box py={4}>
+          <DiscussionEmbed
+            shortname="luftywiranda"
+            config={{
+              identifier: url,
+              title,
+              url,
+            }}
+          />
+        </Box>
       </Container>
     </Fragment>
   );
@@ -52,10 +66,16 @@ export const query = graphql`
       html
       fields {
         date(formatString: "MMMM DD, YYYY")
+        slug
       }
       frontmatter {
         title
         tags
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }
