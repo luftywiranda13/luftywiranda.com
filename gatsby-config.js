@@ -5,6 +5,7 @@ require('dotenv').config();
 module.exports = {
   plugins: [
     'gatsby-plugin-catch-links',
+    'gatsby-plugin-lodash',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-next',
     'gatsby-plugin-remove-trailing-slashes',

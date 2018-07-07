@@ -1,6 +1,7 @@
 'use strict';
 
 const { resolve } = require('path');
+const { kebabCase } = require('lodash');
 
 const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)\.md$/;
 
@@ -45,14 +46,20 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
             fields {
               slug
             }
+            frontmatter {
+              tags
+            }
           }
         }
       }
     }
   `);
 
+  let tags = [];
+
   allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug } = node.fields;
+    tags = tags.concat(node.frontmatter.tags);
 
     if (slug.includes('blog/')) {
       createPage({
@@ -63,5 +70,15 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
         },
       });
     }
+  });
+
+  [...new Set(tags)].forEach(tag => {
+    createPage({
+      path: `/tags/${kebabCase(tag)}/`,
+      component: resolve('./src/templates/tags.js'),
+      context: {
+        tag,
+      },
+    });
   });
 };
