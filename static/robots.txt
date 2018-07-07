@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /report.html
+Sitemap: https://www.luftywiranda.com/sitemap.xml
