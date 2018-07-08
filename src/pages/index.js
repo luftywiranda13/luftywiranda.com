@@ -16,6 +16,7 @@ import {
   Text,
 } from 'rebass';
 import PostPreview from '../components/PostPreview';
+import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import { colors, lineHeights } from '../theme';
 
 const Avatar = A.extend.attrs({ mb: 3 })`
@@ -68,6 +69,7 @@ const Card = C.extend`
 
 const IndexPage = ({ data }) => (
   <Fragment>
+    <TitleAndMetaTags />
     <Container>
       <Box is="section" pt={4} pb={5} w={[1, 1, '62%']}>
         <Avatar

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import { Container, Flex, Heading } from 'rebass';
 import PostPreview from '../components/PostPreview';
+import TitleAndMetaTags from '../components/TitleAndMetaTags';
 
 export default ({ pathContext, data }) => {
   const { tag } = pathContext;
@@ -9,7 +9,10 @@ export default ({ pathContext, data }) => {
 
   return (
     <Fragment>
-      <Helmet defer={false} title={tag} />
+      <TitleAndMetaTags
+        title={tag}
+        description={`Posts tagged with “${tag}”`}
+      />
 
       <Container py={4}>
         <Heading is="h1" mb={3}>

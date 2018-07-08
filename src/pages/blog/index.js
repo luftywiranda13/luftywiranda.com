@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import { Container, Flex } from 'rebass';
 import PostPreview from '../../components/PostPreview';
+import TitleAndMetaTags from '../../components/TitleAndMetaTags';
 
 export default ({ data }) => (
   <Fragment>
-    <Helmet defer={false} title="Blog" />
+    <TitleAndMetaTags title="Blog" />
 
     <Container>
       <Flex flexWrap="wrap" mx={-2} py={4}>

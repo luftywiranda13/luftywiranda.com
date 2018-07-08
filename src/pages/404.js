@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import { Container, Heading, Text } from 'rebass';
+import TitleAndMetaTags from '../components/TitleAndMetaTags';
 
 export default () => (
   <Fragment>
-    <Helmet defer={false} title="Page not found" />
+    <TitleAndMetaTags title="Page not found" />
 
     <Container is="section" py={4}>
       <Heading is="h1" mb={3}>

@@ -1,7 +1,8 @@
 'use strict';
 
 module.exports = {
-  siteDescription: 'Personal Website of Lufty Wiranda',
+  siteDescription:
+    'Personal Website of Lufty Wiranda. A software developer who lives in Bandung, Indonesia.',
   siteRepo: 'https://github.com/luftywiranda13/luftywiranda.com',
   siteTitle: 'Lufty Wiranda',
   siteTitleAlt: 'LuftyWiranda',

@@ -2,9 +2,9 @@ import { DiscussionEmbed } from 'disqus-react';
 import Link from 'gatsby-link';
 import { camelCase, kebabCase, upperFirst } from 'lodash';
 import React, { Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import { Box, Button, Container, Heading, Small } from 'rebass';
 import SharingButtons from '../components/SharingButtons';
+import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
 
 const Tag = Button.extend.attrs({
@@ -21,12 +21,16 @@ const Tag = Button.extend.attrs({
 `;
 
 export default ({ data }) => {
-  const { title, tags } = data.markdownRemark.frontmatter;
+  const { title, tags, thumbnail } = data.markdownRemark.frontmatter;
   const url = `${siteConstants.siteUrl}${data.markdownRemark.fields.slug}`;
 
   return (
     <Fragment>
-      <Helmet defer={false} title={title} />
+      <TitleAndMetaTags
+        title={title}
+        description={data.markdownRemark.excerpt}
+        image={thumbnail.childImageSharp.resize.src}
+      />
 
       <Container>
         <Box is="article" width={[1, 2 / 3]} py={4}>
@@ -73,6 +77,7 @@ export default ({ data }) => {
 export const query = graphql`
   query BlogPostQuery($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      excerpt
       html
       fields {
         date(formatString: "MMMM DD, YYYY")
@@ -81,6 +86,13 @@ export const query = graphql`
       frontmatter {
         title
         tags
+        thumbnail {
+          childImageSharp {
+            resize(quality: 85) {
+              src
+            }
+          }
+        }
       }
     }
   }
