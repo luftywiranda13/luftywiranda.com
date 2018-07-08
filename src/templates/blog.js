@@ -4,6 +4,7 @@ import { kebabCase } from 'lodash';
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Button, Container, Heading, Small } from 'rebass';
+import SharingButtons from '../components/SharingButtons';
 
 const Tag = Button.extend.attrs({
   mx: 1,
@@ -21,7 +22,7 @@ const Tag = Button.extend.attrs({
 export default ({ data }) => {
   const { title, tags } = data.markdownRemark.frontmatter;
   const { siteUrl } = data.site.siteMetadata;
-  const url = `${siteUrl}/${data.markdownRemark.fields.slug}`;
+  const url = `${siteUrl}${data.markdownRemark.fields.slug}`;
 
   return (
     <Fragment>
@@ -34,26 +35,31 @@ export default ({ data }) => {
             {data.markdownRemark.fields.date}
           </Small>
 
-          <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
-        </Box>
-
-        <Box py={4} mx={-1}>
-          {tags.map(tag => (
-            <Tag key={tag} is={Link} to={`/tags/${kebabCase(tag)}`}>
-              {tag}
-            </Tag>
-          ))}
-        </Box>
-
-        <Box py={4}>
-          <DiscussionEmbed
-            shortname="luftywiranda"
-            config={{
-              identifier: url,
-              title,
-              url,
-            }}
+          <Box
+            pt={3}
+            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
           />
+
+          <Box py={4} mx={-1}>
+            {tags.map(tag => (
+              <Tag key={tag} is={Link} to={`/tags/${kebabCase(tag)}`}>
+                {tag}
+              </Tag>
+            ))}
+          </Box>
+
+          <SharingButtons title={title} url={url} />
+
+          <Box py={4}>
+            <DiscussionEmbed
+              shortname="luftywiranda"
+              config={{
+                identifier: url,
+                title,
+                url,
+              }}
+            />
+          </Box>
         </Box>
       </Container>
     </Fragment>
