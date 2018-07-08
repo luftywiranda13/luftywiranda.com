@@ -1,6 +1,6 @@
 import { DiscussionEmbed } from 'disqus-react';
 import Link from 'gatsby-link';
-import { kebabCase } from 'lodash';
+import { camelCase, kebabCase, upperFirst } from 'lodash';
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Button, Container, Heading, Small } from 'rebass';
@@ -48,7 +48,11 @@ export default ({ data }) => {
             ))}
           </Box>
 
-          <SharingButtons title={title} url={url} />
+          <SharingButtons
+            title={title}
+            url={url}
+            hashTags={tags.map(x => `${upperFirst(camelCase(x))}`)}
+          />
 
           <Box py={4}>
             <DiscussionEmbed

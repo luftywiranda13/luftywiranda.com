@@ -2,7 +2,7 @@ import React from 'react';
 import { Box } from 'rebass';
 import './sharingbuttons.css';
 
-export default ({ title, url }) => {
+export default ({ title, url, hashTags }) => {
   const encodedTitle = encodeURIComponent(title);
   const encodedUrl = encodeURIComponent(url);
 
@@ -27,7 +27,9 @@ export default ({ title, url }) => {
       </a>
       <a
         className="resp-sharing-button__link"
-        href={`https://twitter.com/intent/tweet/?text=${encodedTitle};&amp;url=${encodedUrl}`}
+        href={`https://twitter.com/intent/tweet/?text=${encodedTitle}.%20%23${hashTags.join(
+          '%20%23',
+        )};&amp;url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
       >
