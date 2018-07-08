@@ -5,6 +5,7 @@ import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { Box, Button, Container, Heading, Small } from 'rebass';
 import SharingButtons from '../components/SharingButtons';
+import siteConstants from '../site-constants';
 
 const Tag = Button.extend.attrs({
   mx: 1,
@@ -21,8 +22,7 @@ const Tag = Button.extend.attrs({
 
 export default ({ data }) => {
   const { title, tags } = data.markdownRemark.frontmatter;
-  const { siteUrl } = data.site.siteMetadata;
-  const url = `${siteUrl}${data.markdownRemark.fields.slug}`;
+  const url = `${siteConstants.siteUrl}${data.markdownRemark.fields.slug}`;
 
   return (
     <Fragment>
@@ -56,7 +56,7 @@ export default ({ data }) => {
 
           <Box py={4}>
             <DiscussionEmbed
-              shortname="luftywiranda"
+              shortname={siteConstants.disqusShortname}
               config={{
                 identifier: url,
                 title,
@@ -81,11 +81,6 @@ export const query = graphql`
       frontmatter {
         title
         tags
-      }
-    }
-    site {
-      siteMetadata {
-        siteUrl
       }
     }
   }

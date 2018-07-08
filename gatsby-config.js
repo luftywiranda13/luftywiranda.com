@@ -2,6 +2,8 @@
 
 require('dotenv').config();
 
+const siteConstants = require('./src/site-constants');
+
 module.exports = {
   plugins: [
     'gatsby-plugin-catch-links',
@@ -16,13 +18,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://www.luftywiranda.com',
+        siteUrl: siteConstants.siteUrl,
       },
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-108616737-1',
+        trackingId: siteConstants.gaTrackingId,
       },
     },
     {
@@ -32,8 +34,8 @@ module.exports = {
         theme_color: '#001F3F',
         display: 'minimal-ui',
         icon: 'src/assets/icon.png',
-        name: 'Lufty Wiranda',
-        short_name: 'LuftyWiranda',
+        name: siteConstants.siteTitle,
+        short_name: siteConstants.siteTitleAlt,
         start_url: '/',
       },
     },
@@ -60,7 +62,7 @@ module.exports = {
         },
         queries: [
           `{
-            user(login: "luftywiranda13") {
+            user(login: "${siteConstants.githubUsername}") {
               repositories(
                 first: 6
                 isFork: false
@@ -110,8 +112,8 @@ module.exports = {
     'gatsby-plugin-netlify',
   ],
   siteMetadata: {
-    description: 'Personal Website of Lufty Wiranda',
-    siteUrl: 'https://www.luftywiranda.com',
-    title: 'Lufty Wiranda',
+    description: siteConstants.siteDescription,
+    siteUrl: siteConstants.siteUrl,
+    title: siteConstants.siteTitle,
   },
 };

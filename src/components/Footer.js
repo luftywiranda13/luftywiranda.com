@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'gatsby-link';
 import React from 'react';
 import { Box, Flex, Link as L, Text as T } from 'rebass';
+import siteConstants from '../site-constants';
 import { colors } from '../theme';
 
 const Wrapper = Box.extend.attrs({
@@ -46,7 +47,7 @@ const RebassLink = L.extend.attrs({ color: 'black38', mx: 1 })`
 
 const social = [
   {
-    href: 'https://www.instagram.com/luftywiranda13/',
+    href: `https://www.instagram.com/${siteConstants.instagramUsername}`,
     icon: (
       <FontAwesomeIcon
         icon={faInstagram}
@@ -57,15 +58,15 @@ const social = [
     ),
   },
   {
-    href: 'https://twitter.com/luftywiranda13',
+    href: `https://twitter.com/${siteConstants.twitterUsername}`,
     icon: <FontAwesomeIcon icon={faTwitterSquare} size="2x" />,
   },
   {
-    href: 'https://github.com/luftywiranda13',
+    href: `https://github.com/${siteConstants.githubUsername}`,
     icon: <FontAwesomeIcon icon={faGithubSquare} size="2x" />,
   },
   {
-    href: 'https://open.spotify.com/user/22o26ts24msoodldvgddspbsa',
+    href: `https://open.spotify.com/user/${siteConstants.spotifyUsername}`,
     icon: (
       <FontAwesomeIcon
         icon={faSpotify}
@@ -85,10 +86,11 @@ export default () => (
   <Wrapper>
     <Flex flexDirection="column" justifyContent="center">
       <Text>
-        &copy; {new Date().getFullYear()} Lufty Wiranda<br />
+        &copy; {new Date().getFullYear()} {siteConstants.ownerName}
+        <br />
         View the source on{' '}
         <a
-          href="https://github.com/luftywiranda13/luftywiranda.com"
+          href={siteConstants.siteRepo}
           target="_blank"
           rel="noopener noreferrer"
         >

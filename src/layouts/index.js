@@ -5,6 +5,7 @@ import 'sanitize.css';
 import { injectGlobal } from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import siteConstants from '../site-constants';
 import theme, { colors, lineHeights } from '../theme';
 
 /* eslint-disable no-unused-expressions */
@@ -27,12 +28,12 @@ const Flex = F.extend.attrs({ flexDirection: 'column' })`
   min-height: 100vh;
 `;
 
-const Layout = ({ children, data }) => (
+const Layout = ({ children }) => (
   <Fragment>
     <Helmet
       defer={false}
-      defaultTitle={data.site.siteMetadata.title}
-      titleTemplate={`%s - ${data.site.siteMetadata.title}`}
+      defaultTitle={siteConstants.siteTitle}
+      titleTemplate={`%s - ${siteConstants.siteTitle}`}
     />
     <Helmet>
       <html lang="en" />
@@ -63,7 +64,7 @@ const Layout = ({ children, data }) => (
     <Provider theme={theme}>
       <Flex>
         <Navbar
-          title={data.site.siteMetadata.title}
+          title={siteConstants.siteTitle}
           items={[
             { label: 'Blog', href: '/blog' },
             { label: 'Projects', href: '/projects' },
@@ -82,13 +83,3 @@ const Layout = ({ children, data }) => (
 );
 
 export default Layout;
-
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
