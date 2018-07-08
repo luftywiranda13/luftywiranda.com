@@ -31,6 +31,13 @@ export const query = graphql`
           }
           frontmatter {
             title
+            thumbnail {
+              childImageSharp {
+                sizes(quality: 85) {
+                  ...GatsbyImageSharpSizes_withWebp
+                }
+              }
+            }
           }
           excerpt
         }
