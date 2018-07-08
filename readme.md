@@ -1,6 +1,19 @@
-# luftywiranda.com
+# [luftywiranda.com](https://www.luftywiranda.com)
 
-> Personal website of Lufty Wiranda
+Built with [React](https://reactjs.org), [Gatsby](https://www.gatsbyjs.org), and
+[GraphQL](http://graphql.org).
+
+Styled with [styled-components](https://www.styled-components.com) and
+[rebass](https://github.com/jxnblk/rebass).
+
+## Getting Started
+
+### Prerequisites
+
+1.  [Git](https://git-scm.com)
+1.  [Node.js](https://nodejs.org) v8.x
+1.  A cloned/forked of this repository
+1.  Install projectʼs dependencies: `npm install`
 
 ## License
 
