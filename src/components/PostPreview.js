@@ -1,3 +1,4 @@
+import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import React from 'react';
 import { BackgroundImage, Box, Card as C, Small, Subhead, Text } from 'rebass';
@@ -28,8 +29,8 @@ export default ({ node }) => (
     <Link to={node.fields.slug} style={{ textDecoration: 'none' }}>
       <Card p={0}>
         <Thumbnail
-          is="img"
-          src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=2048&q=20"
+          is={Img}
+          sizes={node.frontmatter.thumbnail.childImageSharp.sizes}
         />
 
         <Box p={3}>

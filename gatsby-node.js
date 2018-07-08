@@ -16,7 +16,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       const year = match[1];
       const month = match[2];
       const day = match[3];
-      const filename = match[4];
+      const filename = match[4].replace('/index', '');
       const date = new Date(Date.UTC(year, month - 1, day));
 
       const slug = `/blog/${year}-${month}-${day}-${filename}`;

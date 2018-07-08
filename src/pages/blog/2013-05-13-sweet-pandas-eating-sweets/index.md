@@ -1,6 +1,7 @@
 ---
 title: "Sweet Pandas Eating Sweets"
 tags: ["Wild Animals", "Panda"]
+thumbnail: "./thumbnail.jpg"
 ---
 
 Pandas are really sweet.
