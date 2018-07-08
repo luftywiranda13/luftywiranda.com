@@ -5,7 +5,7 @@ import TitleAndMetaTags from '../../components/TitleAndMetaTags';
 
 export default ({ data }) => (
   <Fragment>
-    <TitleAndMetaTags title="Blog" />
+    <TitleAndMetaTags title="Blog" url="/blog" />
 
     <Container>
       <Flex flexWrap="wrap" mx={-2} py={4}>

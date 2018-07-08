@@ -28,6 +28,7 @@ export default ({ data }) => {
     <Fragment>
       <TitleAndMetaTags
         title={title}
+        url={data.markdownRemark.fields.slug}
         description={data.markdownRemark.excerpt}
         image={thumbnail.childImageSharp.resize.src}
       />

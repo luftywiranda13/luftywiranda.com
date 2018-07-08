@@ -4,7 +4,7 @@ import TitleAndMetaTags from '../components/TitleAndMetaTags';
 
 export default () => (
   <Fragment>
-    <TitleAndMetaTags title="Page not found" />
+    <TitleAndMetaTags title="Page not found" url="/404" />
 
     <Container is="section" py={4}>
       <Heading is="h1" mb={3}>

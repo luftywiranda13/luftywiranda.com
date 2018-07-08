@@ -11,6 +11,7 @@ export default ({ pathContext, data }) => {
     <Fragment>
       <TitleAndMetaTags
         title={tag}
+        url={`/tags/${tag}`}
         description={`Posts tagged with “${tag}”`}
       />
 

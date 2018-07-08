@@ -69,7 +69,8 @@ const Card = C.extend`
 
 const IndexPage = ({ data }) => (
   <Fragment>
-    <TitleAndMetaTags />
+    <TitleAndMetaTags url="/" />
+
     <Container>
       <Box is="section" pt={4} pb={5} w={[1, 1, '62%']}>
         <Avatar

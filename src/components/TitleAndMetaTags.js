@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import siteConstants from '../site-constants';
 
-export default ({ description, image, title }) => (
+export default ({ url, description, image, title }) => (
   <Fragment>
     {title && <Helmet defer={false} title={title} />}
 
@@ -32,14 +32,27 @@ export default ({ description, image, title }) => (
         content={`@${siteConstants.twitterUsername}`}
       />
 
-      <meta name="og:title" content={title || siteConstants.siteTitle} />
+      <meta property="og:title" content={title || siteConstants.siteTitle} />
+      <meta property="og:url" content={siteConstants.siteUrl + url} />
       <meta
-        name="og:description"
+        property="og:type"
+        content={url.includes('blog/') ? 'article' : 'website'}
+      />
+      <meta
+        property="og:image"
+        content={
+          image
+            ? `${siteConstants.siteUrl}${image}`
+            : `${siteConstants.siteUrl}/icon.png`
+        }
+      />
+      <meta
+        property="og:description"
         content={description || siteConstants.siteDescription}
       />
-      <meta name="og:site_name" content={siteConstants.siteTitle} />
-      <meta name="fb:admins" content={siteConstants.fbAdmins} />
-      <meta name="fb:app_id" content={siteConstants.fbAppId} />
+      <meta property="og:site_name" content={siteConstants.siteTitle} />
+      <meta property="fb:admins" content={siteConstants.fbAdmins} />
+      <meta property="fb:app_id" content={siteConstants.fbAppId} />
     </Helmet>
   </Fragment>
 );
