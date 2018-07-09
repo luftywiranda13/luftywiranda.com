@@ -109,7 +109,7 @@ const IndexPage = ({ data }) => (
           >
             Read blog
           </Button>
-          <Button is={Link} to="/contact" bg="black87">
+          <Button is={Link} to="/contact/" bg="black87">
             Contact
           </Button>
         </Flex>

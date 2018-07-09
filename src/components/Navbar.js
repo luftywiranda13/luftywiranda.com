@@ -44,25 +44,20 @@ const MenuItem = NavLink.extend.attrs({
   }
 `;
 
-const Menu = ({ items }) => (
-  <Box is="nav" ml="auto" px={[2, 0]}>
-    {items.map(x => (
-      <MenuItem key={x.href} is={Link} to={x.href}>
-        {x.label}
-      </MenuItem>
-    ))}
-  </Box>
-);
-
-const Navbar = ({ title, items }) => (
+export default ({ title, items }) => (
   <Wrapper>
     <Container>
       <NavLink is={Link} to="/">
         {title}
       </NavLink>
-      <Menu items={items} />
+
+      <Box is="nav" ml="auto" px={[2, 0]}>
+        {items.map(x => (
+          <MenuItem key={x.href} is={Link} to={x.href}>
+            {x.label}
+          </MenuItem>
+        ))}
+      </Box>
     </Container>
   </Wrapper>
 );
-
-export default Navbar;

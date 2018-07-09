@@ -55,7 +55,7 @@ export default ({ data }) => {
 
           <Box py={4} mx={-1}>
             {tags.map(tag => (
-              <Tag key={tag} is={Link} to={`/tags/${kebabCase(tag)}`}>
+              <Tag key={tag} is={Link} to={`/tags/${kebabCase(tag)}/`}>
                 {tag}
               </Tag>
             ))}

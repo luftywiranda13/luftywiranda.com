@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import { Box, Flex as F, Provider } from 'rebass';
+import { Box, Flex, Provider } from 'rebass';
 import 'sanitize.css';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import siteConstants from '../site-constants';
 import theme from '../theme';
 
-const Flex = F.extend.attrs({ flexDirection: 'column' })`
+const Wrapper = Flex.extend.attrs({ flexDirection: 'column' })`
   min-height: 100vh;
 `;
 
@@ -20,13 +20,13 @@ const Layout = ({ children }) => (
     />
 
     <Provider theme={theme}>
-      <Flex>
+      <Wrapper>
         <Navbar
           title={siteConstants.siteTitle}
           items={[
-            { label: 'Blog', href: '/blog' },
-            { label: 'Projects', href: '/projects' },
-            { label: 'Contact', href: '/contact' },
+            { label: 'Blog', href: '/blog/' },
+            { label: 'Projects', href: '/projects/' },
+            { label: 'Contact', href: '/contact/' },
           ]}
         />
 
@@ -35,7 +35,7 @@ const Layout = ({ children }) => (
         </Box>
 
         <Footer />
-      </Flex>
+      </Wrapper>
     </Provider>
   </Fragment>
 );

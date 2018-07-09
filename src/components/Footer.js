@@ -19,6 +19,9 @@ const Wrapper = Box.extend.attrs({
   px: 3,
   mt: 4,
 })`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-top: 1px solid ${colors.black12};
 `;
 
@@ -77,59 +80,57 @@ const social = [
     ),
   },
   {
-    href: '/contact',
+    href: '/contact/',
     icon: <FontAwesomeIcon icon={faEnvelopeSquare} size="2x" />,
   },
 ];
 
 export default () => (
   <Wrapper>
-    <Flex flexDirection="column" justifyContent="center">
-      <Text>
-        &copy; {new Date().getFullYear()} {siteConstants.ownerName}
-      </Text>
+    <Text>
+      &copy; {new Date().getFullYear()} {siteConstants.ownerName}
+    </Text>
 
-      <Text>
-        View the source on{' '}
-        <a
-          href={siteConstants.siteRepo}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </Text>
+    <Text>
+      View the source on{' '}
+      <a
+        href={siteConstants.siteRepo}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    </Text>
 
-      <Flex justifyContent="center" py={3}>
-        {social.map(
-          x =>
-            x.href.includes('https://') ? (
-              <RebassLink
-                key={x.href}
-                href={x.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {x.icon}
-              </RebassLink>
-            ) : (
-              <RebassLink key={x.href} is={Link} to={x.href}>
-                {x.icon}
-              </RebassLink>
-            ),
-        )}
-      </Flex>
-
-      <Text mt={3}>
-        The contents of this website are licensed under{' '}
-        <a
-          href="https://creativecommons.org/licenses/by/4.0/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          CC-BY-4.0
-        </a>
-      </Text>
+    <Flex justifyContent="center" py={3}>
+      {social.map(
+        x =>
+          x.href.includes('https://') ? (
+            <RebassLink
+              key={x.href}
+              href={x.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {x.icon}
+            </RebassLink>
+          ) : (
+            <RebassLink key={x.href} is={Link} to={x.href}>
+              {x.icon}
+            </RebassLink>
+          ),
+      )}
     </Flex>
+
+    <Text mt={3}>
+      The contents of this website are licensed under{' '}
+      <a
+        href="https://creativecommons.org/licenses/by/4.0/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        CC-BY-4.0
+      </a>
+    </Text>
   </Wrapper>
 );
