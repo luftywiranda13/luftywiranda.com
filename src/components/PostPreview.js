@@ -2,6 +2,7 @@ import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import React from 'react';
 import { BackgroundImage, Box, Card as C, Small, Subhead, Text } from 'rebass';
+import { lineHeights } from '../theme';
 
 const Card = C.extend`
   min-height: 100%;
@@ -10,6 +11,7 @@ const Card = C.extend`
 
   &:hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+
     h3 {
       text-decoration: underline;
     }
@@ -41,7 +43,7 @@ export default ({ node }) => (
             {node.fields.date}
           </Small>
 
-          <Text is="p" mt={3} color="black87">
+          <Text is="p" mt={3} color="black87" lineHeight={lineHeights.loose}>
             {node.excerpt}
           </Text>
         </Box>

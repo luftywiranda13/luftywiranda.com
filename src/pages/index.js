@@ -61,6 +61,7 @@ const Card = C.extend`
 
   &:hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+
     h3 {
       text-decoration: underline;
     }
@@ -79,11 +80,16 @@ const IndexPage = ({ data }) => (
           alt="Lufty Wiranda"
         />
 
-        <Heading is="h1" mb={3}>
+        <Heading
+          is="h1"
+          mb={3}
+          color="black87"
+          lineHeight={lineHeights.compact}
+        >
           A software developer who lives in Bandung, Indonesia.
         </Heading>
 
-        <Lead is="p">
+        <Lead is="p" color="black87">
           Programming is a hobby but I take it seriously. Iʼve worked on amazing
           projects with companies, government, and also brilliant people.
         </Lead>
@@ -110,7 +116,12 @@ const IndexPage = ({ data }) => (
       </Box>
 
       <Box id="blog" is="section" py={5}>
-        <Heading fontSize={4} mb={2}>
+        <Heading
+          fontSize={4}
+          mb={2}
+          color="black87"
+          lineHeight={lineHeights.compact}
+        >
           Latest posts
         </Heading>
 
@@ -122,7 +133,12 @@ const IndexPage = ({ data }) => (
       </Box>
 
       <Box is="section" py={5}>
-        <Heading fontSize={4} mb={2}>
+        <Heading
+          fontSize={4}
+          mb={2}
+          color="black87"
+          lineHeight={lineHeights.compact}
+        >
           Open-source
         </Heading>
 
@@ -143,7 +159,12 @@ const IndexPage = ({ data }) => (
                     {node.primaryLanguage.name}
                   </Small>
 
-                  <Text is="p" mt={3} color="black87">
+                  <Text
+                    is="p"
+                    mt={3}
+                    color="black87"
+                    lineHeight={lineHeights.loose}
+                  >
                     {node.description}
                   </Text>
                 </Card>
