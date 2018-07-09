@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Container, Flex, Heading } from 'rebass';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
+import { lineHeights } from '../theme';
 
 export default ({ pathContext, data }) => {
   const { tag } = pathContext;
@@ -16,7 +17,12 @@ export default ({ pathContext, data }) => {
       />
 
       <Container py={4}>
-        <Heading is="h1" mb={3}>
+        <Heading
+          is="h1"
+          mb={3}
+          color="black87"
+          lineHeight={lineHeights.compact}
+        >
           {totalCount} {totalCount >= 2 ? 'posts' : 'post'} tagged with “{tag}”
         </Heading>
 

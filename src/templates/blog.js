@@ -6,6 +6,13 @@ import { Box, Button, Container, Heading, Small } from 'rebass';
 import SharingButtons from '../components/SharingButtons';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
+import { lineHeights } from '../theme';
+
+const MarkdownWrapper = Box.extend.attrs({ pt: 3 })`
+  p {
+    line-height: ${lineHeights.loose};
+  }
+`;
 
 const Tag = Button.extend.attrs({
   mx: 1,
@@ -35,13 +42,14 @@ export default ({ data }) => {
 
       <Container>
         <Box is="article" width={[1, 2 / 3]} py={4}>
-          <Heading is="h1">{title}</Heading>
+          <Heading is="h1" color="black87" lineHeight={lineHeights.compact}>
+            {title}
+          </Heading>
           <Small fontSize={1} color="black54">
             {data.markdownRemark.fields.date}
           </Small>
 
-          <Box
-            pt={3}
+          <MarkdownWrapper
             dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
           />
 
