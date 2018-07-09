@@ -87,7 +87,9 @@ export default () => (
     <Flex flexDirection="column" justifyContent="center">
       <Text>
         &copy; {new Date().getFullYear()} {siteConstants.ownerName}
-        <br />
+      </Text>
+
+      <Text>
         View the source on{' '}
         <a
           href={siteConstants.siteRepo}
