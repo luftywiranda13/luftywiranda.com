@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Flex, Heading } from 'rebass';
+import { Flex, Heading } from 'rebass';
+import Container from '../components/Container';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import { lineHeights } from '../theme';
@@ -9,7 +10,7 @@ export default ({ location, pathContext, data }) => {
   const { totalCount } = data.allMarkdownRemark;
 
   return (
-    <Container py={4}>
+    <Container>
       <TitleAndMetaTags
         title={tag}
         url={location.pathname}

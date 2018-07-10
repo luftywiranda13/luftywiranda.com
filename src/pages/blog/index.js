@@ -1,11 +1,12 @@
 import React from 'react';
-import { Container, Flex, Heading } from 'rebass';
+import { Flex, Heading } from 'rebass';
+import Container from '../../components/Container';
 import PostPreview from '../../components/PostPreview';
 import TitleAndMetaTags from '../../components/TitleAndMetaTags';
 import { lineHeights } from '../../theme';
 
 export default ({ data, location }) => (
-  <Container py={4}>
+  <Container>
     <TitleAndMetaTags title="Blog" url={location.pathname} />
 
     <Heading is="h1" mb={3} color="black87" lineHeight={lineHeights.compact}>

@@ -1,8 +1,9 @@
 import Link from 'gatsby-link';
 import React from 'react';
-import { Box, Container as C, Fixed, NavLink as N } from 'rebass';
+import { Box, Fixed, NavLink as N } from 'rebass';
 import { css } from 'styled-components';
 import { colors, lineHeights } from '../theme';
+import C from './Container';
 
 const horizontalScroll = css`
   overflow-x: auto;
@@ -24,7 +25,7 @@ const Wrapper = Fixed.extend.attrs({ bg: 'white', top: 0, zIndex: 2 })`
   opacity: 0.95;
 `;
 
-const Container = C.extend.attrs({ px: 0 })`
+const Container = C.extend.attrs({ px: 0, py: 0 })`
   display: flex;
 `;
 
