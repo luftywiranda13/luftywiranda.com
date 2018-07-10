@@ -1,6 +1,6 @@
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
-import React, { Fragment } from 'react';
+import React from 'react';
 import Scrollchor from 'react-scrollchor';
 import {
   Avatar as A,
@@ -10,7 +10,6 @@ import {
   Container,
   Flex,
   Heading,
-  Lead,
   Small,
   Subhead,
   Text,
@@ -68,116 +67,108 @@ const Card = C.extend`
   }
 `;
 
-const IndexPage = ({ data }) => (
-  <Fragment>
+export default ({ data }) => (
+  <Container>
     <TitleAndMetaTags url="/" />
 
-    <Container>
-      <Box is="section" pt={4} pb={5} w={[1, 1, '62%']}>
-        <Avatar
-          is={Img}
-          resolutions={data.file.childImageSharp.resolutions}
-          alt="Lufty Wiranda"
-        />
+    <Box is="section" pt={4} pb={5} w={[1, 1, '62%']}>
+      <Avatar
+        is={Img}
+        resolutions={data.file.childImageSharp.resolutions}
+        alt="Lufty Wiranda"
+      />
 
-        <Heading
-          is="h1"
-          mb={3}
+      <Heading is="h1" mb={3} color="black87" lineHeight={lineHeights.compact}>
+        A software developer who lives in Bandung, Indonesia.
+      </Heading>
+
+      <Text is="p" fontSize={3} color="black87" lineHeight="1.25" my={20}>
+        Programming is a hobby but I take it seriously. Iʼve worked on amazing
+        projects with companies, government, and also brilliant people.
+      </Text>
+
+      <Flex
+        flexDirection={['column', 'row']}
+        flexWrap="wrap"
+        m={-1}
+        w={[1, 1 / 2]}
+      >
+        <Button
+          is={Scrollchor}
+          disableHistory
+          to="#blog"
+          animate={{ offset: -32, duration: 200 }}
+          bg="transparent"
           color="black87"
-          lineHeight={lineHeights.compact}
         >
-          A software developer who lives in Bandung, Indonesia.
-        </Heading>
+          Read blog
+        </Button>
+        <Button is={Link} to="/contact/" bg="black87">
+          Contact
+        </Button>
+      </Flex>
+    </Box>
 
-        <Lead is="p" color="black87">
-          Programming is a hobby but I take it seriously. Iʼve worked on amazing
-          projects with companies, government, and also brilliant people.
-        </Lead>
+    <Box id="blog" is="section" py={5}>
+      <Heading
+        fontSize={4}
+        mb={2}
+        color="black87"
+        lineHeight={lineHeights.compact}
+      >
+        Latest posts
+      </Heading>
 
-        <Flex
-          flexDirection={['column', 'row']}
-          flexWrap="wrap"
-          m={-1}
-          w={[1, 1 / 2]}
-        >
-          <Button
-            is={Scrollchor}
-            to="#blog"
-            animate={{ offset: -32, duration: 200 }}
-            bg="transparent"
-            color="black87"
-          >
-            Read blog
-          </Button>
-          <Button is={Link} to="/contact/" bg="black87">
-            Contact
-          </Button>
-        </Flex>
-      </Box>
+      <Flex flexWrap="wrap" mx={-2}>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <PostPreview key={node.fields.slug} node={node} />
+        ))}
+      </Flex>
+    </Box>
 
-      <Box id="blog" is="section" py={5}>
-        <Heading
-          fontSize={4}
-          mb={2}
-          color="black87"
-          lineHeight={lineHeights.compact}
-        >
-          Latest posts
-        </Heading>
+    <Box is="section" py={5}>
+      <Heading
+        fontSize={4}
+        mb={2}
+        color="black87"
+        lineHeight={lineHeights.compact}
+      >
+        Open-source
+      </Heading>
 
-        <Flex flexWrap="wrap" mx={-2}>
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <PostPreview key={node.fields.slug} node={node} />
-          ))}
-        </Flex>
-      </Box>
+      <Flex flexWrap="wrap" mx={-2}>
+        {data.allGithubRepositories.edges.map(({ node }) => (
+          <Box key={node.url} is="article" p={2} w={[1, 1 / 3]}>
+            <a
+              href={node.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
+              <Card p={3}>
+                <Subhead fontSize={3} color="black87">
+                  {node.name}
+                </Subhead>
+                <Small fontSize={1} color="black54">
+                  {node.primaryLanguage.name}
+                </Small>
 
-      <Box is="section" py={5}>
-        <Heading
-          fontSize={4}
-          mb={2}
-          color="black87"
-          lineHeight={lineHeights.compact}
-        >
-          Open-source
-        </Heading>
-
-        <Flex flexWrap="wrap" mx={-2}>
-          {data.allGithubRepositories.edges.map(({ node }) => (
-            <Box key={node.url} is="article" p={2} w={[1, 1 / 3]}>
-              <a
-                href={node.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none' }}
-              >
-                <Card p={3}>
-                  <Subhead fontSize={3} color="black87">
-                    {node.name}
-                  </Subhead>
-                  <Small fontSize={1} color="black54">
-                    {node.primaryLanguage.name}
-                  </Small>
-
-                  <Text
-                    is="p"
-                    mt={3}
-                    color="black87"
-                    lineHeight={lineHeights.loose}
-                  >
-                    {node.description}
-                  </Text>
-                </Card>
-              </a>
-            </Box>
-          ))}
-        </Flex>
-      </Box>
-    </Container>
-  </Fragment>
+                <Text
+                  is="p"
+                  mt={3}
+                  color="black87"
+                  lineHeight={lineHeights.loose}
+                >
+                  {node.description}
+                </Text>
+              </Card>
+            </a>
+          </Box>
+        ))}
+      </Flex>
+    </Box>
+  </Container>
 );
-
-export default IndexPage;
 
 export const query = graphql`
   query IndexPageQuery {

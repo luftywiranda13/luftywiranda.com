@@ -4,7 +4,14 @@ import siteConstants from '../site-constants';
 
 export default ({ url, description, image, title }) => (
   <Fragment>
-    {title && <Helmet defer={false} title={title} />}
+    <Helmet
+      defer={false}
+      title={
+        title
+          ? `${title} - ${siteConstants.siteTitle}`
+          : `${siteConstants.siteTitle}`
+      }
+    />
 
     <Helmet>
       <meta

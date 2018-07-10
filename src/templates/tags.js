@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Container, Flex, Heading } from 'rebass';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
@@ -9,30 +9,23 @@ export default ({ pathContext, data }) => {
   const { totalCount } = data.allMarkdownRemark;
 
   return (
-    <Fragment>
+    <Container py={4}>
       <TitleAndMetaTags
         title={tag}
         url={`/tags/${tag}`}
         description={`Posts tagged with “${tag}”`}
       />
 
-      <Container py={4}>
-        <Heading
-          is="h1"
-          mb={3}
-          color="black87"
-          lineHeight={lineHeights.compact}
-        >
-          {totalCount} {totalCount >= 2 ? 'posts' : 'post'} tagged with “{tag}”
-        </Heading>
+      <Heading is="h1" mb={3} color="black87" lineHeight={lineHeights.compact}>
+        {totalCount} {totalCount >= 2 ? 'posts' : 'post'} tagged with “{tag}”
+      </Heading>
 
-        <Flex flexWrap="wrap" mx={-2} pb={4}>
-          {data.allMarkdownRemark.edges.map(({ node }) => (
-            <PostPreview key={node.fields.slug} node={node} />
-          ))}
-        </Flex>
-      </Container>
-    </Fragment>
+      <Flex flexWrap="wrap" mx={-2} pb={4}>
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <PostPreview key={node.fields.slug} node={node} />
+        ))}
+      </Flex>
+    </Container>
   );
 };
 

@@ -1,20 +1,23 @@
-import React, { Fragment } from 'react';
-import { Container, Flex } from 'rebass';
+import React from 'react';
+import { Container, Flex, Heading } from 'rebass';
 import PostPreview from '../../components/PostPreview';
 import TitleAndMetaTags from '../../components/TitleAndMetaTags';
+import { lineHeights } from '../../theme';
 
 export default ({ data }) => (
-  <Fragment>
+  <Container py={4}>
     <TitleAndMetaTags title="Blog" url="/blog" />
 
-    <Container>
-      <Flex flexWrap="wrap" mx={-2} py={4}>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <PostPreview key={node.fields.slug} node={node} />
-        ))}
-      </Flex>
-    </Container>
-  </Fragment>
+    <Heading is="h1" mb={3} color="black87" lineHeight={lineHeights.compact}>
+      All blog posts
+    </Heading>
+
+    <Flex flexWrap="wrap" mx={-2} pb={4}>
+      {data.allMarkdownRemark.edges.map(({ node }) => (
+        <PostPreview key={node.fields.slug} node={node} />
+      ))}
+    </Flex>
+  </Container>
 );
 
 export const query = graphql`

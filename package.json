@@ -7,10 +7,10 @@
   },
   "scripts": {
     "precommit": "lint-staged",
+    "clean": "rimraf ./.cache ./public",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "lint": "eslint .",
-    "reset": "rimraf ./.cache ./public",
     "serve": "gatsby serve -o"
   },
   "dependencies": {
