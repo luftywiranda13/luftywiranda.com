@@ -2,7 +2,8 @@ import { DiscussionEmbed } from 'disqus-react';
 import Link from 'gatsby-link';
 import { camelCase, kebabCase, upperFirst } from 'lodash';
 import React from 'react';
-import { Box, Button, Container, Heading, Text } from 'rebass';
+import { Box, Button, Heading, Text } from 'rebass';
+import Container from '../components/Container';
 import SharingButtons from '../components/SharingButtons';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
@@ -34,7 +35,7 @@ export default ({ data, location }) => {
   const url = siteConstants.siteUrl + fields.slug;
 
   return (
-    <Container>
+    <Container py={0}>
       <TitleAndMetaTags
         title={frontmatter.title}
         url={location.pathname}

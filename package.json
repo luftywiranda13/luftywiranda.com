@@ -52,7 +52,8 @@
     "react-scrollchor": "^6.0.0",
     "rebass": "^2.0.1",
     "sanitize.css": "^6.0.0",
-    "styled-components": "^3.3.3"
+    "styled-components": "^3.3.3",
+    "styled-system": "^2.3.5"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

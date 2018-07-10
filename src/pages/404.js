@@ -1,10 +1,11 @@
 import React from 'react';
-import { Container, Heading, Text } from 'rebass';
+import { Heading, Text } from 'rebass';
+import Container from '../components/Container';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import { lineHeights } from '../theme';
 
 export default ({ location }) => (
-  <Container py={4}>
+  <Container>
     <TitleAndMetaTags title="Page not found" url={location.pathname} />
 
     <Heading is="h1" mb={3} color="black87" lineHeight={lineHeights.compact}>
