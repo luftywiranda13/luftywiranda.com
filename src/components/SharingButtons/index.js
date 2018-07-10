@@ -29,7 +29,7 @@ export default ({ title, url, hashTags }) => {
         className="resp-sharing-button__link"
         href={`https://twitter.com/intent/tweet/?text=${encodedTitle}.%20%23${hashTags.join(
           '%20%23',
-        )};&amp;url=${encodedUrl}`}
+        )}.&amp;url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
       >
