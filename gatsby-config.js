@@ -8,12 +8,11 @@ module.exports = {
   plugins: [
     'gatsby-plugin-catch-links',
     'gatsby-plugin-lodash',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-react-next',
-    'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-react-next',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-canonical-urls',
@@ -94,9 +93,15 @@ module.exports = {
         plugins: [
           'gatsby-remark-autolink-headers',
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-external-links',
           'gatsby-remark-responsive-iframe',
           'gatsby-remark-smartypants',
+          {
+            resolve: 'gatsby-remark-external-links',
+            options: {
+              target: '_blank',
+              rel: 'noopener noreferrer',
+            },
+          },
           {
             resolve: 'gatsby-remark-images',
             options: {

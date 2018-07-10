@@ -3,23 +3,23 @@
 const { resolve } = require('path');
 const { kebabCase } = require('lodash');
 
-const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)\.md$/;
-
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators;
+  const BLOG_POST_FILENAME_REGEX = /([0-9]+)-([0-9]+)-([0-9]+)-(.+)\.md$/;
 
   if (node.internal.type === 'MarkdownRemark') {
     const { relativePath } = getNode(node.parent);
 
     if (relativePath.includes('blog/')) {
       const match = BLOG_POST_FILENAME_REGEX.exec(relativePath);
+
       const year = match[1];
       const month = match[2];
       const day = match[3];
       const filename = match[4].replace('/index', '');
-      const date = new Date(Date.UTC(year, month - 1, day));
 
-      const slug = `/blog/${year}-${month}-${day}-${filename}`;
+      const date = new Date(Date.UTC(year, month - 1, day));
+      const slug = `/blog/${year}-${month}-${day}-${filename}/`;
 
       createNodeField({
         node,
@@ -61,7 +61,7 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     const { slug } = node.fields;
     tags = tags.concat(node.frontmatter.tags);
 
-    if (slug.includes('blog/')) {
+    if (slug.includes('/blog/')) {
       createPage({
         path: slug,
         component: resolve('./src/templates/blog.js'),

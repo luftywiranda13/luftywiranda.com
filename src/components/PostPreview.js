@@ -1,7 +1,7 @@
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import React from 'react';
-import { BackgroundImage, Box, Card as C, Small, Subhead, Text } from 'rebass';
+import { BackgroundImage, Box, Card as C, Subhead, Text } from 'rebass';
 import { lineHeights } from '../theme';
 
 const Card = C.extend`
@@ -26,28 +26,30 @@ const Thumbnail = BackgroundImage.extend.attrs({ ratio: 9 / 16 })`
   }
 `;
 
-export default ({ node }) => (
-  <Box is="article" p={2} w={[1, 1 / 3]}>
-    <Link to={node.fields.slug} style={{ textDecoration: 'none' }}>
-      <Card p={0}>
-        <Thumbnail
-          is={Img}
-          sizes={node.frontmatter.thumbnail.childImageSharp.sizes}
-        />
+export default ({ node }) => {
+  const { excerpt, fields, frontmatter } = node;
+  const { sizes: thumbnailSizes } = frontmatter.thumbnail.childImageSharp;
 
-        <Box p={3}>
-          <Subhead fontSize={3} color="black87">
-            {node.frontmatter.title}
-          </Subhead>
-          <Small fontSize={1} color="black54">
-            {node.fields.date}
-          </Small>
+  return (
+    <Box is="article" p={2} w={[1, 1 / 3]}>
+      <Link to={fields.slug} style={{ textDecoration: 'none' }}>
+        <Card p={0}>
+          <Thumbnail is={Img} sizes={thumbnailSizes} />
 
-          <Text is="p" mt={3} color="black87" lineHeight={lineHeights.loose}>
-            {node.excerpt}
-          </Text>
-        </Box>
-      </Card>
-    </Link>
-  </Box>
-);
+          <Box p={3}>
+            <Subhead fontSize={3} color="black87">
+              {frontmatter.title}
+            </Subhead>
+            <Text is="p" fontSize={1} color="black54">
+              {fields.date}
+            </Text>
+
+            <Text is="p" mt={3} color="black87" lineHeight={lineHeights.loose}>
+              {excerpt}
+            </Text>
+          </Box>
+        </Card>
+      </Link>
+    </Box>
+  );
+};

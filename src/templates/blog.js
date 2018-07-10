@@ -1,8 +1,8 @@
 import { DiscussionEmbed } from 'disqus-react';
 import Link from 'gatsby-link';
 import { camelCase, kebabCase, upperFirst } from 'lodash';
-import React, { Fragment } from 'react';
-import { Box, Button, Container, Heading, Small } from 'rebass';
+import React from 'react';
+import { Box, Button, Container, Heading, Text } from 'rebass';
 import SharingButtons from '../components/SharingButtons';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
@@ -27,59 +27,57 @@ const Tag = Button.extend.attrs({
   }
 `;
 
-export default ({ data }) => {
-  const { title, tags, thumbnail } = data.markdownRemark.frontmatter;
-  const url = `${siteConstants.siteUrl}${data.markdownRemark.fields.slug}`;
+export default ({ data, location }) => {
+  const { excerpt, fields, frontmatter, html } = data.markdownRemark;
+  const { src: thumbnail } = frontmatter.thumbnail.childImageSharp.resize;
+
+  const url = siteConstants.siteUrl + fields.slug;
 
   return (
-    <Fragment>
+    <Container>
       <TitleAndMetaTags
-        title={title}
-        url={data.markdownRemark.fields.slug}
-        description={data.markdownRemark.excerpt}
-        image={thumbnail.childImageSharp.resize.src}
+        title={frontmatter.title}
+        url={location.pathname}
+        description={excerpt}
+        image={thumbnail}
       />
 
-      <Container>
-        <Box is="article" width={[1, 2 / 3]} py={4}>
-          <Heading is="h1" color="black87" lineHeight={lineHeights.compact}>
-            {title}
-          </Heading>
-          <Small fontSize={1} color="black54">
-            {data.markdownRemark.fields.date}
-          </Small>
+      <Box is="article" width={[1, 2 / 3]} py={4}>
+        <Heading is="h1" color="black87" lineHeight={lineHeights.compact}>
+          {frontmatter.title}
+        </Heading>
+        <Text is="p" fontSize={1} color="black54">
+          {fields.date}
+        </Text>
 
-          <MarkdownWrapper
-            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-          />
+        <MarkdownWrapper dangerouslySetInnerHTML={{ __html: html }} />
 
-          <Box py={4} mx={-1}>
-            {tags.map(tag => (
-              <Tag key={tag} is={Link} to={`/tags/${kebabCase(tag)}`}>
-                {tag}
-              </Tag>
-            ))}
-          </Box>
-
-          <SharingButtons
-            title={title}
-            url={url}
-            hashTags={tags.map(x => `${upperFirst(camelCase(x))}`)}
-          />
-
-          <Box py={4}>
-            <DiscussionEmbed
-              shortname={siteConstants.disqusShortname}
-              config={{
-                identifier: url,
-                title,
-                url,
-              }}
-            />
-          </Box>
+        <Box py={4} mx={-1}>
+          {frontmatter.tags.map(tag => (
+            <Tag key={tag} is={Link} to={`/tags/${kebabCase(tag)}/`}>
+              {tag}
+            </Tag>
+          ))}
         </Box>
-      </Container>
-    </Fragment>
+
+        <SharingButtons
+          title={frontmatter.title}
+          url={url}
+          hashTags={frontmatter.tags.map(x => `${upperFirst(camelCase(x))}`)}
+        />
+
+        <Box py={4}>
+          <DiscussionEmbed
+            shortname={siteConstants.disqusShortname}
+            config={{
+              identifier: url,
+              title: frontmatter.title,
+              url,
+            }}
+          />
+        </Box>
+      </Box>
+    </Container>
   );
 };
 

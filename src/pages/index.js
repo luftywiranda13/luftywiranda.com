@@ -1,6 +1,6 @@
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
-import React, { Fragment } from 'react';
+import React from 'react';
 import Scrollchor from 'react-scrollchor';
 import {
   Avatar as A,
@@ -10,8 +10,6 @@ import {
   Container,
   Flex,
   Heading,
-  Lead,
-  Small,
   Subhead,
   Text,
 } from 'rebass';
@@ -68,15 +66,17 @@ const Card = C.extend`
   }
 `;
 
-const IndexPage = ({ data }) => (
-  <Fragment>
-    <TitleAndMetaTags url="/" />
+export default ({ data, location }) => {
+  const { allGithubRepositories, allMarkdownRemark, file } = data;
 
+  return (
     <Container>
+      <TitleAndMetaTags url={location.pathname} />
+
       <Box is="section" pt={4} pb={5} w={[1, 1, '62%']}>
         <Avatar
           is={Img}
-          resolutions={data.file.childImageSharp.resolutions}
+          resolutions={file.childImageSharp.resolutions}
           alt="Lufty Wiranda"
         />
 
@@ -89,10 +89,10 @@ const IndexPage = ({ data }) => (
           A software developer who lives in Bandung, Indonesia.
         </Heading>
 
-        <Lead is="p" color="black87">
+        <Text is="p" fontSize={3} color="black87" lineHeight="1.25" my={20}>
           Programming is a hobby but I take it seriously. Iʼve worked on amazing
           projects with companies, government, and also brilliant people.
-        </Lead>
+        </Text>
 
         <Flex
           flexDirection={['column', 'row']}
@@ -102,6 +102,7 @@ const IndexPage = ({ data }) => (
         >
           <Button
             is={Scrollchor}
+            disableHistory
             to="#blog"
             animate={{ offset: -32, duration: 200 }}
             bg="transparent"
@@ -109,7 +110,7 @@ const IndexPage = ({ data }) => (
           >
             Read blog
           </Button>
-          <Button is={Link} to="/contact" bg="black87">
+          <Button is={Link} to="/contact/" bg="black87">
             Contact
           </Button>
         </Flex>
@@ -126,7 +127,7 @@ const IndexPage = ({ data }) => (
         </Heading>
 
         <Flex flexWrap="wrap" mx={-2}>
-          {data.allMarkdownRemark.edges.map(({ node }) => (
+          {allMarkdownRemark.edges.map(({ node }) => (
             <PostPreview key={node.fields.slug} node={node} />
           ))}
         </Flex>
@@ -143,7 +144,7 @@ const IndexPage = ({ data }) => (
         </Heading>
 
         <Flex flexWrap="wrap" mx={-2}>
-          {data.allGithubRepositories.edges.map(({ node }) => (
+          {allGithubRepositories.edges.map(({ node }) => (
             <Box key={node.url} is="article" p={2} w={[1, 1 / 3]}>
               <a
                 href={node.url}
@@ -155,9 +156,9 @@ const IndexPage = ({ data }) => (
                   <Subhead fontSize={3} color="black87">
                     {node.name}
                   </Subhead>
-                  <Small fontSize={1} color="black54">
+                  <Text is="p" fontSize={1} color="black54">
                     {node.primaryLanguage.name}
-                  </Small>
+                  </Text>
 
                   <Text
                     is="p"
@@ -174,10 +175,8 @@ const IndexPage = ({ data }) => (
         </Flex>
       </Box>
     </Container>
-  </Fragment>
-);
-
-export default IndexPage;
+  );
+};
 
 export const query = graphql`
   query IndexPageQuery {
