@@ -2,12 +2,12 @@ import Img from 'gatsby-image';
 import Link from 'gatsby-link';
 import React from 'react';
 import { BackgroundImage, Box, Card as C, Subhead, Text } from 'rebass';
-import { lineHeights } from '../theme';
+import { lineHeights, radii } from '../theme';
 
 const Card = C.extend`
   min-height: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  border-radius: 1px;
+  border-radius: ${radii[1]}px;
 
   &:hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
@@ -19,7 +19,8 @@ const Card = C.extend`
 `;
 
 const Thumbnail = BackgroundImage.extend.attrs({ ratio: 9 / 16 })`
-  border-radius: 1px;
+  border-top-left-radius: ${radii[1]}px;
+  border-top-right-radius: ${radii[1]}px;
 
   ${Card}:hover & {
     opacity: 0.8;
@@ -40,7 +41,7 @@ export default ({ node }) => {
             <Subhead fontSize={3} color="black87">
               {frontmatter.title}
             </Subhead>
-            <Text is="p" fontSize={1} color="black54">
+            <Text fontSize={1} color="black54">
               {fields.date}
             </Text>
 

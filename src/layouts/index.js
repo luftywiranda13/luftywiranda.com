@@ -5,16 +5,16 @@ import { injectGlobal } from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import siteConstants from '../site-constants';
-import theme from '../theme';
+import theme, { colors } from '../theme';
 
 /* eslint-disable no-unused-expressions */
 injectGlobal`
   ::selection {
-    background: #fff2a8;
+    background: ${colors.accent};
   }
 
   ::-moz-selection {
-    background: #fff2a8;
+    background: ${colors.accent};
   }
 `;
 /* eslint-enable no-unused-expressions */

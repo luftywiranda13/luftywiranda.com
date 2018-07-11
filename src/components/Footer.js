@@ -122,7 +122,7 @@ export default () => (
       )}
     </Flex>
 
-    <Text mt={3}>
+    <Text>
       The contents of this website are licensed under{' '}
       <a
         href="https://creativecommons.org/licenses/by/4.0/"

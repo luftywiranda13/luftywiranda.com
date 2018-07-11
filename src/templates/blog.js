@@ -47,7 +47,7 @@ export default ({ data, location }) => {
         <Heading is="h1" color="black87" lineHeight={lineHeights.compact}>
           {frontmatter.title}
         </Heading>
-        <Text is="p" fontSize={1} color="black54">
+        <Text fontSize={1} color="black54">
           {fields.date}
         </Text>
 

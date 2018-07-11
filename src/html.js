@@ -1,5 +1,6 @@
 /* eslint-disable global-require, no-console, react/no-danger */
 import React from 'react';
+import { colors } from './theme';
 
 let stylesStr;
 if (process.env.NODE_ENV === `production`) {
@@ -56,7 +57,11 @@ export default ({
           href="/favicon-16x16.png"
         />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffdc00" />
+        <link
+          rel="mask-icon"
+          href="/safari-pinned-tab.svg"
+          color={colors.accent}
+        />
         <meta name="msapplication-config" content="/browserconfig.xml" />
 
         {css}

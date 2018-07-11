@@ -15,7 +15,7 @@ import {
 } from 'rebass';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
-import { colors, lineHeights } from '../theme';
+import { colors, lineHeights, radii } from '../theme';
 
 const Avatar = A.extend.attrs({ mb: 3 })`
   border: 1px solid ${colors.black12};
@@ -27,10 +27,10 @@ const Button = B.extend.attrs({
   mt: 1,
   mb: 1,
   mr: [-1, 1],
+  lineHeight: 'loose',
 })`
   flex: 1;
   box-shadow: inset 0 0 0 2px ${colors.black87};
-  line-height: ${lineHeights.loose};
 
   &:focus {
     box-shadow: 0 0 0 2px ${colors.black38};
@@ -55,7 +55,7 @@ const Button = B.extend.attrs({
 const Card = C.extend`
   min-height: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  border-radius: 1px;
+  border-radius: ${radii[1]}px;
 
   &:hover {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
@@ -156,7 +156,7 @@ export default ({ data, location }) => {
                   <Subhead fontSize={3} color="black87">
                     {node.name}
                   </Subhead>
-                  <Text is="p" fontSize={1} color="black54">
+                  <Text fontSize={1} color="black54">
                     {node.primaryLanguage.name}
                   </Text>
 
