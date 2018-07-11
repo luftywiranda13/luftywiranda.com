@@ -3,6 +3,7 @@
 require('dotenv').config();
 
 const siteConstants = require('./src/site-constants');
+const { colors } = require('./src/theme.js');
 
 module.exports = {
   plugins: [
@@ -43,6 +44,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
+        color: colors.accent,
         showSpinner: false,
       },
     },
