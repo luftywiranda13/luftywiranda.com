@@ -10,13 +10,12 @@ import Link from 'gatsby-link';
 import React from 'react';
 import { Box, Flex, Link as L, Text as T } from 'rebass';
 import siteConstants from '../site-constants';
-import { colors } from '../theme';
+import { colors, lineHeights } from '../theme';
 
 const Wrapper = Box.extend.attrs({
   is: 'footer',
   bg: '#f9f9fa',
-  py: [3, 4],
-  px: 3,
+  p: 3,
   mt: 4,
 })`
   display: flex;
@@ -26,8 +25,9 @@ const Wrapper = Box.extend.attrs({
 `;
 
 const Text = T.extend.attrs({
-  is: 'p',
   color: 'black54',
+  fontSize: 1,
+  lineHeight: lineHeights.loose,
   textAlign: 'center',
   mx: 'auto',
 })`
@@ -123,7 +123,7 @@ export default () => (
     </Flex>
 
     <Text>
-      The contents of this website are licensed under{' '}
+      Contents are licensed under{' '}
       <a
         href="https://creativecommons.org/licenses/by/4.0/"
         target="_blank"
