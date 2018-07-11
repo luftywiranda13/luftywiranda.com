@@ -116,7 +116,16 @@ module.exports = {
       },
     },
     // This plugin has to be listed as the last item in the array
-    'gatsby-plugin-netlify',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          'https://www.google-analytics.com/analytics.js': [
+            'Cache-Control: private, max-age=86400',
+          ],
+        },
+      },
+    },
   ],
   siteMetadata: {
     description: siteConstants.siteDescription,
