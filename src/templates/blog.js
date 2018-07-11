@@ -63,8 +63,9 @@ export default ({ data, location }) => {
 
         <SharingButtons
           title={frontmatter.title}
+          description={excerpt}
+          tags={frontmatter.tags.map(x => `${upperFirst(camelCase(x))}`)}
           url={url}
-          hashTags={frontmatter.tags.map(x => `${upperFirst(camelCase(x))}`)}
         />
 
         <Box py={4}>
