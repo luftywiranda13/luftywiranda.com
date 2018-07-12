@@ -12,7 +12,7 @@ export default ({ location }) => (
       Page not found
     </Heading>
 
-    <Text is="p" mt={3} mb={3} color="black87" lineHeight={lineHeights.loose}>
+    <Text is="p" my={3} color="black87" lineHeight={lineHeights.loose}>
       You may have mistyped the address or the page may have been removed.
     </Text>
   </Container>

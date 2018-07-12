@@ -18,6 +18,7 @@ const colors = (exports.colors = Object.assign({}, baseColor, {
 const fonts = (exports.fonts = {
   sans:
     "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+  mono: '"SF Mono", "Roboto Mono", Menlo, monospace',
 });
 
 const fontSizes = (exports.fontSizes = [
