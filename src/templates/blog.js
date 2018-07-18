@@ -1,0 +1,150 @@
+import { DiscussionEmbed } from 'disqus-react';
+import { camelCase, kebabCase, upperFirst } from 'lodash';
+import React, { Fragment } from 'react';
+import { Border, Box, Button } from 'rebass';
+import styled from 'styled-components';
+import Anchor from '../components/Anchor';
+import Container from '../components/Container';
+import Heading from '../components/Heading';
+import SharingButtons from '../components/SharingButtons';
+import Text from '../components/Text';
+import TitleAndMetaTags from '../components/TitleAndMetaTags';
+import siteConstants from '../site-constants';
+import { fontSizes, fontWeights, space } from '../theme';
+
+const Category = styled(Anchor)`
+  font-size: ${fontSizes[0]}px;
+  font-weight: ${fontWeights.bold};
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const MarkdownWrapper = Box.extend.attrs({ pb: 3, my: 3 })`
+  p {
+    margin: 0 0 ${space[3]}px;
+    line-height: 1.5;
+  }
+`;
+
+const Tag = Button.extend.attrs({
+  mx: 1,
+  mb: 3,
+  bg: 'gray',
+  color: 'primary',
+  fontSize: 0,
+  fontWeight: 'normal',
+})`
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export default ({ data, location }) => {
+  const { excerpt, fields, frontmatter, html } = data.markdownRemark;
+  const { src: thumbnail } = frontmatter.thumbnail.childImageSharp.resize;
+
+  const url = siteConstants.siteUrl + fields.slug;
+
+  return (
+    <Container>
+      <TitleAndMetaTags
+        title={frontmatter.title}
+        url={location.pathname}
+        description={excerpt}
+        image={thumbnail}
+      />
+
+      <Box is="article" width={[1, 2 / 3]}>
+        <Category to={`/blog/${kebabCase(frontmatter.category)}/`}>
+          {frontmatter.category}
+        </Category>
+
+        <Heading is="h1" mt={1}>
+          {frontmatter.title}
+        </Heading>
+
+        <Border
+          py={2}
+          border="1px dotted"
+          borderColor="primary"
+          borderLeft="none"
+          borderRight="none"
+        >
+          <Text fontSize={1} color="black54" mb={0}>
+            Published on{' '}
+            <time dateTime={frontmatter.dateRaw}>{frontmatter.date}</time>
+            {fields.dateModified.includes(frontmatter.date) ? null : (
+              <Fragment>
+                <br />
+                Updated on{' '}
+                <time dateTime={fields.dateModifiedRaw}>
+                  {fields.dateModified}
+                </time>
+              </Fragment>
+            )}
+          </Text>
+        </Border>
+
+        <MarkdownWrapper dangerouslySetInnerHTML={{ __html: html }} />
+
+        <Box mx={-1}>
+          {frontmatter.tags.map(tag => (
+            <Tag key={tag} is={Anchor} to={`/blog/tags/${kebabCase(tag)}/`}>
+              {tag}
+            </Tag>
+          ))}
+        </Box>
+
+        <SharingButtons
+          title={frontmatter.title}
+          description={excerpt}
+          tags={frontmatter.tags.map(x => `${upperFirst(camelCase(x))}`)}
+          url={url}
+        />
+
+        <Box>
+          <DiscussionEmbed
+            shortname={siteConstants.disqusShortname}
+            config={{
+              identifier: url,
+              title: frontmatter.title,
+              url,
+            }}
+          />
+        </Box>
+      </Box>
+    </Container>
+  );
+};
+
+export const query = graphql`
+  query BlogTemplateQuery($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      excerpt
+      html
+      fields {
+        slug
+        dateModifiedRaw: dateModified
+        dateModified: dateModified(formatString: "MMMM D, YYYY")
+      }
+      frontmatter {
+        title
+        dateRaw: date
+        date: date(formatString: "MMMM D, YYYY")
+        category
+        tags
+        thumbnail {
+          childImageSharp {
+            resize(quality: 85) {
+              src
+            }
+          }
+        }
+      }
+    }
+  }
+`;

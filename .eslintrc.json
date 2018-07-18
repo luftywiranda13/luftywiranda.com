@@ -1,0 +1,20 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "globals": {
+    "graphql": true
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/prop-types": "off",
+    "strict": "off"
+  },
+  "settings": {
+    "import/core-modules": ["react"]
+  }
+}

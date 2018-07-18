@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /404.html
+Disallow: /404/
+Sitemap: https://www.luftywiranda.com/sitemap.xml

@@ -1,0 +1,50 @@
+{
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "@textlint-rule/google-articles": true,
+    "@textlint-rule/google-clause-order": true,
+    "@textlint-rule/google-colons": true,
+    "@textlint-rule/google-commas": true,
+    "@textlint-rule/google-contractions": true,
+    "@textlint-rule/google-dashes": true,
+    "@textlint-rule/google-ellipses": true,
+    "@textlint-rule/google-hyphens": true,
+    "@textlint-rule/google-possessives": true,
+    "@textlint-rule/google-quotation-marks": true,
+    "@textlint-rule/google-slashes": true,
+    "@textlint-rule/google-tone": true,
+    "@textlint-rule/google-word-list": true,
+    "@textlint-rule/no-invalid-control-character": true,
+    "abbr-within-parentheses": true,
+    "alex": true,
+    "common-misspellings": true,
+    "date-weekday-mismatch": true,
+    "diacritics": true,
+    "en-max-word-count": true,
+    "hex-number": true,
+    "max-comma": true,
+    "max-number-of-lines": true,
+    "no-dead-link": {
+      "checkRelative": false,
+      "baseURI": null,
+      "ignore": [],
+      "preferGET": []
+    },
+    "no-empty-section": true,
+    "no-start-duplicated-conjunction": true,
+    "no-surrogate-pair": true,
+    "no-todo": true,
+    "period-in-list-item": true,
+    "real-symbols": true,
+    "rousseau": {
+      "ignoreTypes": ["adverbs", "lexical-illusion", "passive", "so", "weasel"]
+    },
+    "sentence-length": true,
+    "stop-words": true,
+    "terminology": true,
+    "unexpanded-acronym": true,
+    "write-good": true
+  }
+}
