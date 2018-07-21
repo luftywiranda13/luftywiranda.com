@@ -1,14 +1,11 @@
-import {
-  faGithubSquare,
-  faInstagram,
-  faSpotify,
-  faTwitterSquare,
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelopeSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Box, Flex } from 'rebass';
 import styled from 'styled-components';
+import { Github } from 'styled-icons/fa-brands/Github.cjs';
+import { Instagram } from 'styled-icons/fa-brands/Instagram.cjs';
+import { Spotify } from 'styled-icons/fa-brands/Spotify.cjs';
+import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs';
+import { MailRead } from 'styled-icons/octicons/MailRead.cjs';
 import siteConstants from '../site-constants';
 import { colors } from '../theme';
 import Anchor from './Anchor';
@@ -19,10 +16,6 @@ const Wrapper = Box.extend.attrs({ is: 'footer', py: 4, px: 3 })`
   flex-direction: column;
   justify-content: center;
   border-top: 1px solid ${colors.darken};
-
-  svg:hover {
-    color: ${colors.primary};
-  }
 `;
 
 const Text = styled(T).attrs({
@@ -32,56 +25,39 @@ const Text = styled(T).attrs({
   mx: 'auto',
 })``;
 
+const IconStyles = `
+  color: ${colors.black38};
+
+  &:hover {
+    color: ${colors.primary};
+  }
+`;
+
 const social = [
   {
+    title: 'Instagram',
     href: `https://www.instagram.com/${siteConstants.instagramUsername}`,
-    icon: (
-      <FontAwesomeIcon
-        icon={faInstagram}
-        size="2x"
-        color={colors.black38}
-        mask={faSquare}
-        transform="shrink-4"
-      />
-    ),
+    icon: <Instagram size="24" title="Instagram" css={IconStyles} />,
   },
   {
+    title: 'Twitter',
     href: `https://twitter.com/${siteConstants.twitterUsername}`,
-    icon: (
-      <FontAwesomeIcon
-        icon={faTwitterSquare}
-        size="2x"
-        color={colors.black38}
-      />
-    ),
+    icon: <Twitter size="24" title="Twitter" css={IconStyles} />,
   },
   {
+    title: 'GitHub',
     href: `https://github.com/${siteConstants.githubUsername}`,
-    icon: (
-      <FontAwesomeIcon icon={faGithubSquare} size="2x" color={colors.black38} />
-    ),
+    icon: <Github size="24" title="GitHub" css={IconStyles} />,
   },
   {
+    title: 'Spotify',
     href: `https://open.spotify.com/user/${siteConstants.spotifyUsername}`,
-    icon: (
-      <FontAwesomeIcon
-        icon={faSpotify}
-        size="2x"
-        color={colors.black38}
-        mask={faSquare}
-        transform="shrink-5.5"
-      />
-    ),
+    icon: <Spotify size="24" title="Spotify" css={IconStyles} />,
   },
   {
+    title: 'Contact',
     href: '/contact/',
-    icon: (
-      <FontAwesomeIcon
-        icon={faEnvelopeSquare}
-        size="2x"
-        color={colors.black38}
-      />
-    ),
+    icon: <MailRead size="24" title="Contact" css={IconStyles} />,
   },
 ];
 
@@ -100,7 +76,7 @@ export default () => (
 
     <Flex justifyContent="center" mb={3}>
       {social.map(x => (
-        <Anchor key={x.href} to={x.href} mx={1}>
+        <Anchor key={x.href} to={x.href} mx={1} title={x.title}>
           {x.icon}
         </Anchor>
       ))}
