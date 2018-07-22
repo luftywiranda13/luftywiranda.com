@@ -1,25 +1,10 @@
 import React from 'react';
 import { Box, Flex, Provider } from 'rebass';
 import 'sanitize.css';
-import { injectGlobal } from 'styled-components';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import siteConstants from '../site-constants';
-import theme, { colors } from '../theme';
-
-/* eslint-disable no-unused-expressions */
-injectGlobal`
-  ::selection {
-    background-color: ${colors.primary};
-    color: ${colors.white};
-  }
-
-  ::-moz-selection {
-    background-color: ${colors.primary};
-    color: ${colors.white};
-  }
-`;
-/* eslint-enable no-unused-expressions */
+import theme from '../theme';
 
 export default ({ children }) => (
   <Provider theme={theme}>
