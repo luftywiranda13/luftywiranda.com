@@ -7,8 +7,8 @@ import { Spotify } from 'styled-icons/fa-brands/Spotify.cjs';
 import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs';
 import { MailRead } from 'styled-icons/octicons/MailRead.cjs';
 import siteConstants from '../site-constants';
-import { colors } from '../theme';
-import Anchor from './Anchor';
+import { colors, space } from '../theme';
+import Anchor, { StyledAnchor } from './Anchor';
 import T from './Text';
 
 const Wrapper = Box.extend.attrs({ is: 'footer', py: 4, px: 3 })`
@@ -69,14 +69,20 @@ export default () => (
 
     <Text>
       View the source on{' '}
-      <Anchor to={siteConstants.siteRepo} primary="true">
-        GitHub
-      </Anchor>
+      <StyledAnchor to={siteConstants.siteRepo}>GitHub</StyledAnchor>
     </Text>
 
     <Flex justifyContent="center" mb={3}>
       {social.map(x => (
-        <Anchor key={x.href} to={x.href} mx={1} title={x.title}>
+        <Anchor
+          key={x.href}
+          to={x.href}
+          title={x.title}
+          style={{
+            marginLeft: `${space[1]}px`,
+            marginRight: `${space[1]}px`,
+          }}
+        >
           {x.icon}
         </Anchor>
       ))}
@@ -84,9 +90,9 @@ export default () => (
 
     <Text mb={0}>
       Content released under{' '}
-      <Anchor to="https://creativecommons.org/licenses/by/4.0/" primary="true">
+      <StyledAnchor to="https://creativecommons.org/licenses/by/4.0/">
         CC-BY-4.0
-      </Anchor>
+      </StyledAnchor>
     </Text>
   </Wrapper>
 );

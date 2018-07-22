@@ -2,7 +2,7 @@ import Img from 'gatsby-image';
 import React from 'react';
 import Scrollchor from 'react-scrollchor';
 import { Avatar, Box, Button as B, Flex } from 'rebass';
-import Anchor from '../components/Anchor';
+import Anchor, { StyledAnchor } from '../components/Anchor';
 import Container from '../components/Container';
 import GithubRepo from '../components/GithubRepo';
 import Heading from '../components/Heading';
@@ -10,7 +10,7 @@ import Lead from '../components/Lead';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
-import { colors } from '../theme';
+import { colors, space } from '../theme';
 
 const Button = B.extend.attrs({
   m: 1,
@@ -109,17 +109,18 @@ export default ({ data, location }) => {
             <GithubRepo key={node.url} node={node} />
           ))}
 
-          <Anchor
-            primary="true"
+          <StyledAnchor
             to={`https://github.com/${
               siteConstants.githubUsername
             }?tab=repositories`}
-            ml="auto"
-            mr={2}
-            mt={2}
+            style={{
+              marginLeft: 'auto',
+              marginTop: `${space[2]}px`,
+              marginRight: `${space[2]}px`,
+            }}
           >
             More on GitHub &raquo;
-          </Anchor>
+          </StyledAnchor>
         </Flex>
       </Box>
     </Container>

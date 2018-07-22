@@ -2,8 +2,7 @@ import { DiscussionEmbed } from 'disqus-react';
 import { camelCase, kebabCase, upperFirst } from 'lodash';
 import React, { Fragment } from 'react';
 import { Border, Box, Button } from 'rebass';
-import styled from 'styled-components';
-import Anchor from '../components/Anchor';
+import Anchor, { StyledAnchor } from '../components/Anchor';
 import Container from '../components/Container';
 import Heading from '../components/Heading';
 import SharingButtons from '../components/SharingButtons';
@@ -12,15 +11,11 @@ import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
 import { fontSizes, fontWeights, space } from '../theme';
 
-const Category = styled(Anchor)`
+const Category = StyledAnchor.extend`
   font-size: ${fontSizes[0]}px;
   font-weight: ${fontWeights.bold};
-  text-decoration: none;
   text-transform: uppercase;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  border-bottom: 1px solid transparent;
 `;
 
 const MarkdownWrapper = Box.extend.attrs({ pb: 3, my: 3 })`

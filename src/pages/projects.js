@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, Flex } from 'rebass';
 import styled from 'styled-components';
-import Anchor from '../components/Anchor';
+import { StyledAnchor } from '../components/Anchor';
 import Container from '../components/Container';
 import GithubRepo from '../components/GithubRepo';
 import Heading from '../components/Heading';
 import Lead from '../components/Lead';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
-import { breakpoints } from '../theme';
+import { breakpoints, space } from '../theme';
 
 const RwdLine = styled.span`
   @media (min-width: ${breakpoints[2]}) {
@@ -36,11 +36,8 @@ export default ({ location, data }) => {
             agreements.{' '}
           </RwdLine>
           <RwdLine>
-            <Anchor to="/contact/" primary="true">
-              Contact me
-            </Anchor>{' '}
-            if you’re interested to see some examples, I’ll be happy to send
-            them to you.
+            <StyledAnchor to="/contact/">Contact me</StyledAnchor> if you’re
+            interested to see some examples, I’ll be happy to send them to you.
           </RwdLine>
         </Lead>
       </Box>
@@ -63,17 +60,18 @@ export default ({ location, data }) => {
             <GithubRepo key={node.url} node={node} />
           ))}
 
-          <Anchor
-            primary="true"
+          <StyledAnchor
             to={`https://github.com/${
               siteConstants.githubUsername
             }?tab=repositories`}
-            ml="auto"
-            mr={2}
-            mt={2}
+            style={{
+              marginLeft: 'auto',
+              marginTop: `${space[2]}px`,
+              marginRight: `${space[2]}px`,
+            }}
           >
             More on GitHub &raquo;
-          </Anchor>
+          </StyledAnchor>
         </Flex>
       </Box>
     </Container>
