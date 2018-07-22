@@ -40,7 +40,7 @@ export default ({ title, category, description, thumbnail, link }) => (
             mb={0}
             fontSize={0}
             color="black54"
-            style={{ textTransform: 'uppercase' }}
+            style={{ letterSpacing: '0.05em', textTransform: 'uppercase' }}
           >
             {category}
           </Text>

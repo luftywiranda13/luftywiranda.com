@@ -9,11 +9,11 @@ import SharingButtons from '../components/SharingButtons';
 import Text from '../components/Text';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
-import { fontSizes, fontWeights, space } from '../theme';
+import { fontSizes, space } from '../theme';
 
 const Category = StyledAnchor.extend`
   font-size: ${fontSizes[0]}px;
-  font-weight: ${fontWeights.bold};
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   border-bottom: 1px solid transparent;
 `;
