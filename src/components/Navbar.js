@@ -1,14 +1,19 @@
 import React from 'react';
-import { Box, Fixed, NavLink as N } from 'rebass';
+import { Box, NavLink as N } from 'rebass';
+import styled from 'styled-components';
 import { colors, lineHeights } from '../theme';
 import Anchor from './Anchor';
 import C from './Container';
 
-const Wrapper = Fixed.extend.attrs({
-  bg: 'rgba(255, 255, 255, 0.98)',
-  top: 0,
-  zIndex: 2,
-})`
+const Wrapper = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.98);
+  border-top: 5px solid ${colors.primary};
+  border-bottom: 1px solid ${colors.darken};
+
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
@@ -18,10 +23,6 @@ const Wrapper = Fixed.extend.attrs({
   &::-webkit-scrollbar {
     display: none;
   }
-
-  border-top: 4px solid ${colors.primary};
-  border-bottom: 1px solid ${colors.darken};
-  width: 100%;
 `;
 
 const Container = C.extend`
