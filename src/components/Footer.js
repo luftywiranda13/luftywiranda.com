@@ -83,7 +83,7 @@ export default () => (
     </Flex>
 
     <Text mb={0}>
-      Contents are available under{' '}
+      Content released under{' '}
       <Anchor to="https://creativecommons.org/licenses/by/4.0/" primary="true">
         CC-BY-4.0
       </Anchor>
