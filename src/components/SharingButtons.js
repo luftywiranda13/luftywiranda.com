@@ -14,10 +14,10 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from 'react-share';
-import { Box as B, Flex } from 'rebass';
+import { Box, Flex } from 'rebass';
 import { radii } from '../theme';
 
-const Box = B.extend.attrs({ m: 1 })`
+const ButtonWrapper = Box.extend.attrs({ m: 1 })`
   svg {
     border-radius: ${radii[1]}px;
   }
@@ -28,36 +28,43 @@ const Box = B.extend.attrs({ m: 1 })`
   }
 `;
 
+const SharingButton = ({ Is, Icon, ...rest }) => (
+  <ButtonWrapper is={Is} {...rest}>
+    <Icon size={36} />
+  </ButtonWrapper>
+);
+
 export default ({ title, url, tags, description }) => (
   <Flex mx={-1} mb={5}>
-    <Box is={FacebookShareButton} url={url}>
-      <FacebookIcon size={40} />
-    </Box>
-    <Box is={TwitterShareButton} title={title} url={url} hashtags={tags}>
-      <TwitterIcon size={40} />
-    </Box>
-    <Box is={WhatsappShareButton} title={title} url={url}>
-      <WhatsappIcon size={40} />
-    </Box>
-    <Box is={GooglePlusShareButton} url={url}>
-      <GooglePlusIcon size={40} />
-    </Box>
-    <Box
-      is={TumblrShareButton}
+    <SharingButton Is={FacebookShareButton} Icon={FacebookIcon} url={url} />
+    <SharingButton
+      Is={TwitterShareButton}
+      Icon={TwitterIcon}
+      title={title}
+      url={url}
+      hashtags={tags}
+    />
+    <SharingButton
+      Is={WhatsappShareButton}
+      Icon={WhatsappIcon}
+      title={title}
+      url={url}
+    />
+    <SharingButton Is={GooglePlusShareButton} Icon={GooglePlusIcon} url={url} />
+    <SharingButton
+      Is={TumblrShareButton}
+      Icon={TumblrIcon}
       title={title}
       url={url}
       tags={tags.map(x => startCase(x))}
       caption={description}
-    >
-      <TumblrIcon size={40} />
-    </Box>
-    <Box
-      is={EmailShareButton}
+    />
+    <SharingButton
+      Is={EmailShareButton}
+      Icon={EmailIcon}
       subject={title}
       url={url}
       body={`${description}\n\n${url}`}
-    >
-      <EmailIcon size={40} />
-    </Box>
+    />
   </Flex>
 );
