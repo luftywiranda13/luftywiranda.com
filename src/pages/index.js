@@ -74,7 +74,7 @@ export default ({ data, location }) => {
           <Button
             is={Scrollchor}
             to="#blog"
-            animate={{ offset: -77, duration: 200 }}
+            animate={{ offset: -78, duration: 200 }}
             disableHistory
             bg="transparent"
             color="primary"

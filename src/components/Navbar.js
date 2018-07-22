@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   z-index: 2;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.98);
-  border-top: 4px solid ${colors.primary};
+  border-top: 5px solid ${colors.primary};
   border-bottom: 1px solid ${colors.darken};
 
   overflow-x: auto;

@@ -18,7 +18,7 @@ export default ({ children }) => (
         ]}
       />
 
-      <Box is="main" mt={61} pt={28} pb={6} flex={1}>
+      <Box is="main" mt={62} pt={26} pb={6} flex={1}>
         {children()}
       </Box>
 
