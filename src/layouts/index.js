@@ -18,7 +18,17 @@ export default ({ children }) => (
         ]}
       />
 
-      <Box is="main" mt={62} pt={26} pb={6} flex={1}>
+      <Box
+        is="main"
+        mt={siteConstants.navbarHeight}
+        pt={
+          theme.space[3] +
+          (theme.lineHeights.loose * theme.fontSizes[2] * 3 -
+            siteConstants.navbarHeight)
+        }
+        pb={6}
+        flex={1}
+      >
         {children()}
       </Box>
 
