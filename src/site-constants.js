@@ -18,7 +18,4 @@ module.exports = {
   instagramUsername: 'luftywiranda13',
   spotifyUsername: '22o26ts24msoodldvgddspbsa',
   twitterUsername: 'luftywiranda13',
-
-  // For now, check the height manually
-  navbarHeight: 62,
 };

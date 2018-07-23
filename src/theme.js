@@ -4,6 +4,8 @@
 
 const { colors: baseColor } = require('rebass');
 
+const navbarHeight = (exports.navbarHeight = 56);
+
 const breakpoints = (exports.breakpoints = [32, 48, 64, 80].map(x => `${x}em`));
 
 const colors = (exports.colors = Object.assign({}, baseColor, {
@@ -43,6 +45,7 @@ module.exports = {
   fontSizes,
   fontWeights,
   lineHeights,
+  navbarHeight,
   radii,
   space,
 };

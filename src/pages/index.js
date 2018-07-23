@@ -10,7 +10,7 @@ import Lead from '../components/Lead';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 import siteConstants from '../site-constants';
-import { colors, space } from '../theme';
+import { colors, navbarHeight, space } from '../theme';
 
 const Button = B.extend.attrs({
   m: 1,
@@ -75,7 +75,7 @@ export default ({ data, location }) => {
             is={Scrollchor}
             to="#blog"
             animate={{
-              offset: (siteConstants.navbarHeight + space[3]) * -1,
+              offset: (navbarHeight + space[3]) * -1,
               duration: 200,
             }}
             disableHistory
