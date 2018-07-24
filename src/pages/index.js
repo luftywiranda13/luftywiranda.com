@@ -47,7 +47,7 @@ export default ({ data, location }) => {
     <Container>
       <TitleAndMetaTags url={location.pathname} />
 
-      <Box is="section" width={[1, 1, '62%']} mb={6}>
+      <Box is="header" width={[1, 1, '62%']} mb={6}>
         <Avatar
           is={Img}
           resolutions={file.childImageSharp.resolutions}

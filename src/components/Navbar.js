@@ -16,17 +16,14 @@ const Wrapper = styled.header`
   z-index: 2;
   width: 100%;
   height: ${navbarHeight}px;
-
   background-color: rgba(255, 255, 255, 0.98);
   border-top: ${borders.top}px solid ${colors.primary};
   border-bottom: ${borders.bottom}px solid ${colors.darken};
 `;
 
-const Container = C.extend`
+const Container = C.withComponent('div').extend`
   display: flex;
-  flex-wrap: no-wrap;
-  height: ${navbarHeight - borders.top - borders.bottom}px;
-
+  height: 100%;
   margin-bottom: 0;
   padding-left: ${space[2]}px;
   padding-right: ${space[2]}px;
@@ -34,7 +31,6 @@ const Container = C.extend`
 
 const Nav = styled.nav`
   display: flex;
-  flex-wrap: no-wrap;
   margin-left: auto;
 
   overflow: auto;

@@ -89,41 +89,41 @@ export default ({ location }) => (
       description="Get in touch, tell me what you want to talk about!"
     />
 
-    <Box is="section">
+    <header>
       <Heading is="h1">Contact</Heading>
       <Lead>Get in touch, tell me what you want to talk about!</Lead>
+    </header>
 
-      <form
-        name="contact"
-        method="post"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        style={{ paddingTop: `${space[3]}px` }}
-      >
-        <Box>
-          <input name="form-name" type="hidden" value="contact" />
-          <Input name="bot-field" type="text" style={{ display: 'none' }} />
+    <form
+      name="contact"
+      method="post"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      style={{ paddingTop: `${space[3]}px` }}
+    >
+      <Box>
+        <input name="form-name" type="hidden" value="contact" />
+        <Input name="bot-field" type="text" style={{ display: 'none' }} />
 
-          <Label htmlFor="name">Name</Label>
-          <Input name="name" type="text" placeholder="Angela Moss" required />
+        <Label htmlFor="name">Name</Label>
+        <Input name="name" type="text" placeholder="Angela Moss" required />
 
-          <Label htmlFor="email">Email</Label>
-          <Text color="black54" fontSize={1} mb={2}>
-            Provide your real email address so I can reply to your message
-          </Text>
-          <Input
-            name="email"
-            type="email"
-            placeholder="angela.moss@e-corp.com"
-            required
-          />
+        <Label htmlFor="email">Email</Label>
+        <Text color="black54" fontSize={1} mb={2}>
+          Provide your real email address so I can reply to your message
+        </Text>
+        <Input
+          name="email"
+          type="email"
+          placeholder="angela.moss@e-corp.com"
+          required
+        />
 
-          <Label htmlFor="message">Message</Label>
-          <Textarea name="message" placeholder="Hi, Elliot!" required />
+        <Label htmlFor="message">Message</Label>
+        <Textarea name="message" placeholder="Hi, Elliot!" required />
 
-          <Button type="submit">Send message</Button>
-        </Box>
-      </form>
-    </Box>
+        <Button type="submit">Send message</Button>
+      </Box>
+    </form>
   </Container>
 );

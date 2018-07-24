@@ -54,54 +54,56 @@ export default ({ data, location }) => {
       />
 
       <Box is="article" width={[1, 2 / 3]}>
-        <Category to={`/blog/${kebabCase(frontmatter.category)}/`}>
-          {frontmatter.category}
-        </Category>
+        <header>
+          <Category to={`/blog/${kebabCase(frontmatter.category)}/`}>
+            {frontmatter.category}
+          </Category>
 
-        <Heading is="h1" mt={1}>
-          {frontmatter.title}
-        </Heading>
+          <Heading is="h1" mt={1}>
+            {frontmatter.title}
+          </Heading>
 
-        <Border
-          py={2}
-          border="1px dotted"
-          borderColor="primary"
-          borderLeft="none"
-          borderRight="none"
-        >
-          <Text fontSize={1} color="black54" mb={0}>
-            Published on{' '}
-            <time dateTime={frontmatter.dateRaw}>{frontmatter.date}</time>
-            {fields.dateModified.includes(frontmatter.date) ? null : (
-              <Fragment>
-                <br />
-                Updated on{' '}
-                <time dateTime={fields.dateModifiedRaw}>
-                  {fields.dateModified}
-                </time>
-              </Fragment>
-            )}
-          </Text>
-        </Border>
+          <Border
+            py={2}
+            border="1px dotted"
+            borderColor="primary"
+            borderLeft="none"
+            borderRight="none"
+          >
+            <Text fontSize={1} color="black54" mb={0}>
+              Published on{' '}
+              <time dateTime={frontmatter.dateRaw}>{frontmatter.date}</time>
+              {fields.dateModified.includes(frontmatter.date) ? null : (
+                <Fragment>
+                  <br />
+                  Updated on{' '}
+                  <time dateTime={fields.dateModifiedRaw}>
+                    {fields.dateModified}
+                  </time>
+                </Fragment>
+              )}
+            </Text>
+          </Border>
+        </header>
 
         <MarkdownWrapper dangerouslySetInnerHTML={{ __html: html }} />
 
-        <Box mx={-1}>
-          {frontmatter.tags.map(tag => (
-            <Tag key={tag} is={Anchor} to={`/blog/tags/${kebabCase(tag)}/`}>
-              {tag}
-            </Tag>
-          ))}
-        </Box>
+        <footer>
+          <Box mx={-1}>
+            {frontmatter.tags.map(tag => (
+              <Tag key={tag} is={Anchor} to={`/blog/tags/${kebabCase(tag)}/`}>
+                {tag}
+              </Tag>
+            ))}
+          </Box>
 
-        <SharingButtons
-          title={frontmatter.title}
-          description={excerpt}
-          tags={frontmatter.tags.map(x => `${upperFirst(camelCase(x))}`)}
-          url={url}
-        />
+          <SharingButtons
+            title={frontmatter.title}
+            description={excerpt}
+            tags={frontmatter.tags.map(x => `${upperFirst(camelCase(x))}`)}
+            url={url}
+          />
 
-        <Box>
           <DiscussionEmbed
             shortname={siteConstants.disqusShortname}
             config={{
@@ -110,7 +112,7 @@ export default ({ data, location }) => {
               url,
             }}
           />
-        </Box>
+        </footer>
       </Box>
     </Container>
   );

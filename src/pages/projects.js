@@ -27,9 +27,8 @@ export default ({ location, data }) => {
         description="My awesome projects"
       />
 
-      <Heading is="h1">Projects</Heading>
-
-      <Box mb={6}>
+      <Box is="header" mb={6}>
+        <Heading is="h1">Projects</Heading>
         <Lead>
           <RwdLine>
             I’m not allowed to show all my best work on this site because of the
