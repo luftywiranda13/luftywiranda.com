@@ -51,6 +51,7 @@
     "gatsby-transformer-sharp": "^1.6.27",
     "lodash": "^4.17.10",
     "markdownlint-cli": "^0.12.0",
+    "prop-types": "^15.6.2",
     "react-helmet": "^5.2.0",
     "react-scrollchor": "^6.0.0",
     "react-share": "^2.2.0",

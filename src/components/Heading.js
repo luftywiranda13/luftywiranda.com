@@ -1,8 +1,15 @@
 import React from 'react';
-import { Heading } from 'rebass';
+import PropTypes from 'prop-types';
+import { Heading as H } from 'rebass';
 
-export default ({ children, ...rest }) => (
-  <Heading mb={3} lineHeight="compact" {...rest}>
+const Heading = ({ children, ...rest }) => (
+  <H mb={3} lineHeight="compact" {...rest}>
     {children}
-  </Heading>
+  </H>
 );
+
+Heading.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Heading;

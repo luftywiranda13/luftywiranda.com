@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+
 import siteConstants from '../site-constants';
 
 const defaultProps = {
@@ -46,6 +48,13 @@ const TitleAndMetaTags = ({ url, description, image, title }) => (
     </Helmet>
   </Fragment>
 );
+
+TitleAndMetaTags.propTypes = {
+  url: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  title: PropTypes.string,
+};
 
 TitleAndMetaTags.defaultProps = defaultProps;
 

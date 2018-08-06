@@ -1,5 +1,6 @@
-/* eslint-disable global-require, no-console, react/no-danger */
+/* eslint-disable global-require, no-console, react/no-danger, react/prop-types */
 import React from 'react';
+
 import { colors } from './theme';
 
 let stylesStr;

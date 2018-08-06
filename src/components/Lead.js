@@ -1,8 +1,15 @@
 import React from 'react';
-import { Lead } from 'rebass';
+import PropTypes from 'prop-types';
+import { Lead as L } from 'rebass';
 
-export default ({ children, ...rest }) => (
-  <Lead is="p" mb={3} {...rest}>
+const Lead = ({ children, ...rest }) => (
+  <L is="p" mb={3} {...rest}>
     {children}
-  </Lead>
+  </L>
 );
+
+Lead.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Lead;

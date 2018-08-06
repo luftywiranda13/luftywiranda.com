@@ -1,8 +1,15 @@
 import React from 'react';
-import { Text } from 'rebass';
+import PropTypes from 'prop-types';
+import { Text as T } from 'rebass';
 
-export default ({ children, ...rest }) => (
-  <Text is="p" lineHeight="loose" mb={3} {...rest}>
+const Text = ({ children, ...rest }) => (
+  <T is="p" lineHeight="loose" mb={3} {...rest}>
     {children}
-  </Text>
+  </T>
 );
+
+Text.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default Text;

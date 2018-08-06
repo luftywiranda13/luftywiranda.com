@@ -6,6 +6,7 @@ import { Instagram } from 'styled-icons/fa-brands/Instagram.cjs';
 import { Spotify } from 'styled-icons/fa-brands/Spotify.cjs';
 import { Twitter } from 'styled-icons/fa-brands/Twitter.cjs';
 import { MailRead } from 'styled-icons/octicons/MailRead.cjs';
+
 import siteConstants from '../site-constants';
 import { colors, space } from '../theme';
 import Anchor, { StyledAnchor } from './Anchor';

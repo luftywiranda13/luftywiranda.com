@@ -1,7 +1,9 @@
-import Img from 'gatsby-image';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Img from 'gatsby-image';
 import Scrollchor from 'react-scrollchor';
 import { Avatar, Box, Button as B, Flex } from 'rebass';
+
 import Anchor, { StyledAnchor } from '../components/Anchor';
 import Container from '../components/Container';
 import GithubRepo from '../components/GithubRepo';
@@ -40,7 +42,7 @@ const Button = B.extend.attrs({
   }
 `;
 
-export default ({ data, location }) => {
+const IndexPage = ({ data, location }) => {
   const { allGithubRepositories, allMarkdownRemark, file } = data;
 
   return (
@@ -129,6 +131,20 @@ export default ({ data, location }) => {
     </Container>
   );
 };
+
+IndexPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+
+  data: PropTypes.shape({
+    allGithubRepositories: PropTypes.object.isRequired,
+    allMarkdownRemark: PropTypes.object.isRequired,
+    file: PropTypes.object.isRequired,
+  }).isRequired,
+};
+
+export default IndexPage;
 
 export const query = graphql`
   query IndexPageQuery {

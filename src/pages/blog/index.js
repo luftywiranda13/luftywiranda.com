@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex } from 'rebass';
+
 import Container from '../../components/Container';
 import Heading from '../../components/Heading';
 import PostPreview from '../../components/PostPreview';
 import TitleAndMetaTags from '../../components/TitleAndMetaTags';
 
-export default ({ data, location }) => (
+const BlogPage = ({ data, location }) => (
   <Container>
     <TitleAndMetaTags title="Blog" url={location.pathname} />
 
@@ -20,6 +22,18 @@ export default ({ data, location }) => (
     </Flex>
   </Container>
 );
+
+BlogPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.object,
+  }).isRequired,
+};
+
+export default BlogPage;
 
 export const query = graphql`
   query BlogPageQuery {

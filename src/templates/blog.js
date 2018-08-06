@@ -1,7 +1,9 @@
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { DiscussionEmbed } from 'disqus-react';
 import { camelCase, kebabCase, upperFirst } from 'lodash';
-import React, { Fragment } from 'react';
 import { Border, Box, Button } from 'rebass';
+
 import Anchor, { StyledAnchor } from '../components/Anchor';
 import Container from '../components/Container';
 import Heading from '../components/Heading';
@@ -38,7 +40,7 @@ const Tag = Button.extend.attrs({
   }
 `;
 
-export default ({ data, location }) => {
+const BlogTemplate = ({ data, location }) => {
   const { excerpt, fields, frontmatter, html } = data.markdownRemark;
   const { src: thumbnail } = frontmatter.thumbnail.childImageSharp.resize;
 
@@ -117,6 +119,18 @@ export default ({ data, location }) => {
     </Container>
   );
 };
+
+BlogTemplate.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.object.isRequired,
+  }).isRequired,
+};
+
+export default BlogTemplate;
 
 export const query = graphql`
   query BlogTemplateQuery($slug: String!) {

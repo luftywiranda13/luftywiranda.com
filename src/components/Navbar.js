@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'rebass';
 import styled from 'styled-components';
+
 import { breakpoints, colors, navbarHeight, space } from '../theme';
 import Anchor from './Anchor';
 import C from './Container';
@@ -64,7 +66,7 @@ const NavItem = NavLink.extend.attrs({
   }
 `;
 
-export default ({ title, items }) => (
+const Navbar = ({ title, items }) => (
   <Wrapper>
     <Container>
       <NavLink is={Anchor} to="/" fontSize={2}>
@@ -81,3 +83,15 @@ export default ({ title, items }) => (
     </Container>
   </Wrapper>
 );
+
+Navbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      href: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
+
+export default Navbar;

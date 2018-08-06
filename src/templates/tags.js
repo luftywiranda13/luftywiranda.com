@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex } from 'rebass';
+
 import Container from '../components/Container';
 import Heading from '../components/Heading';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 
-export default ({ location, pathContext, data }) => {
+const TagsTemplate = ({ location, pathContext, data }) => {
   const { tag } = pathContext;
   const { totalCount } = data.allMarkdownRemark;
 
@@ -29,6 +31,22 @@ export default ({ location, pathContext, data }) => {
     </Container>
   );
 };
+
+TagsTemplate.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+
+  pathContext: PropTypes.shape({
+    tag: PropTypes.string.isRequired,
+  }).isRequired,
+
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.object.isRequired,
+  }).isRequired,
+};
+
+export default TagsTemplate;
 
 export const query = graphql`
   query TagsPageQuery($tag: String) {
