@@ -108,7 +108,13 @@ const ContactPage = ({ location }) => (
         <Input name="bot-field" type="text" style={{ display: 'none' }} />
 
         <Label htmlFor="name">Name</Label>
-        <Input name="name" type="text" placeholder="Angela Moss" required />
+        <Input
+          name="name"
+          type="text"
+          placeholder="Angela Moss"
+          autoFocus
+          required
+        />
 
         <Label htmlFor="email">Email</Label>
         <Text color="black54" fontSize={1} mb={2}>
