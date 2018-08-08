@@ -1,9 +1,9 @@
 {
   "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "plugins": ["prettier"],
   "globals": {
     "graphql": true
   },
-  "plugins": ["prettier"],
   "rules": {
     "react/jsx-filename-extension": "off",
     "strict": "off"
