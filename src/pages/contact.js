@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Box, Button as B, Input as I, Textarea as T } from 'rebass';
 import styled, { css } from 'styled-components';
+
 import Container from '../components/Container';
 import Heading from '../components/Heading';
 import Lead from '../components/Lead';
@@ -81,7 +83,7 @@ const Textarea = T.extend.attrs({
   }
 `;
 
-export default ({ location }) => (
+const ContactPage = ({ location }) => (
   <Container>
     <TitleAndMetaTags
       title="Contact"
@@ -127,3 +129,11 @@ export default ({ location }) => (
     </form>
   </Container>
 );
+
+ContactPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default ContactPage;

@@ -1,6 +1,8 @@
-import InternalLink from 'gatsby-link';
 import React from 'react';
+import PropTypes from 'prop-types';
+import InternalLink from 'gatsby-link';
 import styled from 'styled-components';
+
 import { colors } from '../theme';
 
 const Anchor = ({ children, to, ...rest }) =>
@@ -13,6 +15,11 @@ const Anchor = ({ children, to, ...rest }) =>
       {children}
     </InternalLink>
   );
+
+Anchor.propTypes = {
+  children: PropTypes.node.isRequired,
+  to: PropTypes.string.isRequired,
+};
 
 export const StyledAnchor = styled(Anchor)`
   color: ${colors.primary};

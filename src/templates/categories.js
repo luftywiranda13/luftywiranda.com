@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex } from 'rebass';
+
 import Container from '../components/Container';
 import Heading from '../components/Heading';
 import PostPreview from '../components/PostPreview';
 import TitleAndMetaTags from '../components/TitleAndMetaTags';
 
-export default ({ location, pathContext, data }) => {
+const CategoriesTemplate = ({ location, pathContext, data }) => {
   const { category } = pathContext;
   const { totalCount } = data.allMarkdownRemark;
 
@@ -18,9 +20,8 @@ export default ({ location, pathContext, data }) => {
       />
 
       <Heading is="h1" mb={4}>
-        {totalCount} {totalCount >= 2 ? 'posts' : 'post'} categorized as “{
-          category
-        }”
+        {totalCount} {totalCount >= 2 ? 'posts' : 'post'} categorized as “
+        {category}”
       </Heading>
 
       <Flex flexWrap="wrap" m={-2}>
@@ -31,6 +32,22 @@ export default ({ location, pathContext, data }) => {
     </Container>
   );
 };
+
+CategoriesTemplate.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+
+  pathContext: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+  }).isRequired,
+
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.object.isRequired,
+  }).isRequired,
+};
+
+export default CategoriesTemplate;
 
 export const query = graphql`
   query CategoriesTemplateQuery($category: String) {

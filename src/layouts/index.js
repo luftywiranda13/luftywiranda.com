@@ -1,7 +1,10 @@
-import React from 'react';
-import { Box, Provider as P } from 'rebass';
 import 'sanitize.css';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Box, Provider as P } from 'rebass';
 import styled from 'styled-components';
+
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import siteConstants from '../site-constants';
@@ -13,7 +16,7 @@ const Provider = styled(P)`
   min-height: 100vh;
 `;
 
-export default ({ children }) => (
+const IndexLayout = ({ children }) => (
   <Provider theme={theme}>
     <Navbar
       title={siteConstants.siteTitle}
@@ -31,3 +34,9 @@ export default ({ children }) => (
     <Footer />
   </Provider>
 );
+
+IndexLayout.propTypes = {
+  children: PropTypes.func.isRequired,
+};
+
+export default IndexLayout;

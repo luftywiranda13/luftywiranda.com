@@ -1,5 +1,6 @@
-import { startCase } from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
+import { startCase } from 'lodash';
 import {
   EmailIcon,
   EmailShareButton,
@@ -15,6 +16,7 @@ import {
   WhatsappShareButton,
 } from 'react-share';
 import { Box, Flex } from 'rebass';
+
 import { radii } from '../theme';
 
 const ButtonWrapper = Box.extend.attrs({ m: 1 })`
@@ -34,7 +36,12 @@ const SharingButton = ({ Is, Icon, ...rest }) => (
   </ButtonWrapper>
 );
 
-export default ({ title, url, tags, description }) => (
+SharingButton.propTypes = {
+  Is: PropTypes.func.isRequired,
+  Icon: PropTypes.func.isRequired,
+};
+
+const SharingButtons = ({ title, url, tags, description }) => (
   <Flex mx={-1} mb={5}>
     <SharingButton Is={FacebookShareButton} Icon={FacebookIcon} url={url} />
     <SharingButton
@@ -68,3 +75,12 @@ export default ({ title, url, tags, description }) => (
     />
   </Flex>
 );
+
+SharingButtons.propTypes = {
+  description: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
+
+export default SharingButtons;

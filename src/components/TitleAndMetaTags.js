@@ -1,12 +1,8 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import siteConstants from '../site-constants';
 
-const defaultProps = {
-  title: siteConstants.siteTitle,
-  description: siteConstants.siteDescription,
-  image: '/icon.png',
-};
+import siteConstants from '../site-constants';
 
 const TitleAndMetaTags = ({ url, description, image, title }) => (
   <Fragment>
@@ -47,6 +43,17 @@ const TitleAndMetaTags = ({ url, description, image, title }) => (
   </Fragment>
 );
 
-TitleAndMetaTags.defaultProps = defaultProps;
+TitleAndMetaTags.propTypes = {
+  url: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  title: PropTypes.string,
+};
+
+TitleAndMetaTags.defaultProps = {
+  title: siteConstants.siteTitle,
+  description: siteConstants.siteDescription,
+  image: '/icon.png',
+};
 
 export default TitleAndMetaTags;

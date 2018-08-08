@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Box, Flex } from 'rebass';
 import styled from 'styled-components';
+
 import { StyledAnchor } from '../components/Anchor';
 import Container from '../components/Container';
 import GithubRepo from '../components/GithubRepo';
@@ -16,7 +18,7 @@ const RwdLine = styled.span`
   }
 `;
 
-export default ({ location, data }) => {
+const ProjectsPage = ({ location, data }) => {
   const { allGithubRepositories } = data;
 
   return (
@@ -76,6 +78,18 @@ export default ({ location, data }) => {
     </Container>
   );
 };
+
+ProjectsPage.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+
+  data: PropTypes.shape({
+    allGithubRepositories: PropTypes.object.isRequired,
+  }).isRequired,
+};
+
+export default ProjectsPage;
 
 export const query = graphql`
   query ProjectsPageQuery {
