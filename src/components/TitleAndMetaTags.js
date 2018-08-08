@@ -4,12 +4,6 @@ import { Helmet } from 'react-helmet';
 
 import siteConstants from '../site-constants';
 
-const defaultProps = {
-  title: siteConstants.siteTitle,
-  description: siteConstants.siteDescription,
-  image: '/icon.png',
-};
-
 const TitleAndMetaTags = ({ url, description, image, title }) => (
   <Fragment>
     <Helmet
@@ -56,6 +50,10 @@ TitleAndMetaTags.propTypes = {
   title: PropTypes.string,
 };
 
-TitleAndMetaTags.defaultProps = defaultProps;
+TitleAndMetaTags.defaultProps = {
+  title: siteConstants.siteTitle,
+  description: siteConstants.siteDescription,
+  image: '/icon.png',
+};
 
 export default TitleAndMetaTags;

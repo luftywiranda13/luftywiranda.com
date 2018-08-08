@@ -12,7 +12,11 @@ import { colors, space } from '../theme';
 import Anchor, { StyledAnchor } from './Anchor';
 import T from './Text';
 
-const Wrapper = Box.extend.attrs({ is: 'footer', py: 4, px: 3 })`
+const Wrapper = Box.extend.attrs({
+  is: 'footer',
+  py: 4,
+  px: 3,
+})`
   display: flex;
   flex-direction: column;
   justify-content: center;

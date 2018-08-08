@@ -20,7 +20,10 @@ const Category = StyledAnchor.extend`
   border-bottom: 1px solid transparent;
 `;
 
-const MarkdownWrapper = Box.extend.attrs({ pb: 3, my: 3 })`
+const MarkdownWrapper = Box.extend.attrs({
+  pb: 3,
+  my: 3,
+})`
   p {
     margin: 0 0 ${space[3]}px;
     line-height: 1.5;
@@ -28,9 +31,9 @@ const MarkdownWrapper = Box.extend.attrs({ pb: 3, my: 3 })`
 `;
 
 const Tag = Button.extend.attrs({
+  bg: 'gray',
   mx: 1,
   mb: 3,
-  bg: 'gray',
   color: 'primary',
   fontSize: 0,
   fontWeight: 'normal',

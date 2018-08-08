@@ -1,7 +1,8 @@
+import 'sanitize.css';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Provider as P } from 'rebass';
-import 'sanitize.css';
 import styled from 'styled-components';
 
 import Footer from '../components/Footer';
